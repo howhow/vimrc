@@ -4,8 +4,7 @@ for prog in "$@"
 do
     echo ""
     echo "Checking $prog..."
-    if [ "$(dpkg-query -W -f='${Status}' $prog 2>/dev/null | grep -c "ok installed")" -eq 0 ];
-    then
+    if dpkg --get-selections | grep -q "^$prog[[:space:]]*install$" >/dev/null; then
         echo "$prog is not installed"
         sudo apt-get install "$prog"
     else
@@ -24,11 +23,12 @@ fi
 
 echo ""
 echo "Preparing..."
+c_path=$(pwd)
 if [ -f ~/.vimrc ];  then
     echo "Backup current .vimrc"
-    mv ~/.vimrc ~/.vimrc_bak
+    mv "$HOME"/.vimrc "$HOME"/.vimrc_bak
 fi
-ln -s ./vimrc_howchen ~/.vimrc
+ln -s "$c_path"/vimrc_howchen "$HOME"/.vimrc
 
 echo ""
 echo "Env setup done, install VIM plugin..."
