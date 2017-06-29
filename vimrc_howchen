@@ -1,0 +1,297 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+"Plugin 'tpope/vim-fugitive'
+" plugin from http://vim-scripts.org/vim/scripts.html
+"Plugin 'L9'
+" Git plugin not hosted on GitHub
+"Plugin 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (i.e. when working on your own plugin)
+"Plugin 'file:///home/gmarik/path/to/plugin'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Install L9 and avoid a Naming conflict if you've already installed a
+" different version somewhere else.
+"Plugin 'ascenator/L9', {'name': 'newL9'}
+
+" plug-in for YCM
+Plugin 'Valloric/YouCompleteMe'
+
+" YCM-generator
+"Plugin 'rdnetto/YCM-Generator'
+
+" super-tab
+"Plugin 'ervandew/supertab'
+
+" air-line
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
+" NerdTree
+Plugin 'scrooloose/nerdtree'
+
+" tagbar
+Plugin 'majutsushi/tagbar'
+
+" color
+Plugin 'flazz/vim-colorschemes'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'morhetz/gruvbox'
+Plugin 'dracula/vim'
+
+" syntastic
+Plugin 'scrooloose/syntastic'
+
+" plug-in for color_code
+"Plugin 'jeaye/color_coded'
+
+" Plug-in for tmux
+"Plugin 'tmux-plugins/vim-tmux'
+
+" cscope
+Plugin 'steffanc/cscopemaps.vim'
+
+" scratch
+"Plugin 'mtth/scratch.vim'
+
+" Latex
+"Plugin 'lervag/vimtex'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+"filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+"execute pathogen#infect()
+
+au BufRead,BufNewFile *.s	let asmsyntax='gas'|let filetype_inc='gas'
+au BufRead,BufNewFile *.asm	let asmsyntax='armasm'|let filetype_inc='armasm'
+
+" filetype
+filetype plugin on
+filetype indent on
+syntax on
+set term=xterm
+
+if has("gui_running")
+    filetype plugin on
+    filetype indent on
+    syntax on
+    set background=dark
+    "colorscheme solarized
+    colorscheme gruvbox
+    "colorscheme dracula
+    hi cursorline guibg=#5f0000
+    set guifont=DejaVu\ Sans\ Mono\ 10
+    set lines=32
+    set columns=128
+	set mousemodel=popup
+	set guioptions+=b
+	set guioptions-=m
+	set guioptions-=T
+else
+    "set t_Co=256
+    set background=dark
+    "colorscheme solarized
+    "colorscheme gruvbox
+    "colorscheme dracula
+    colorscheme bensday
+    "colorscheme bw
+endif
+
+" self config {
+	set nocompatible
+	set number
+	set ruler
+	set incsearch
+	set hlsearch
+	set tabstop=4
+	set softtabstop=4
+	set shiftwidth=4
+	set expandtab
+	set backspace=2
+	set mouse=a
+	"set mouse=v
+	set showmatch
+	set matchtime=2
+	set cursorline
+	set laststatus=2
+	set encoding=utf-8 " Necessary to show unicode glyphs
+	"set fileencodings=utf-8,chinese
+	set fileencodings=ucs-bom,utf-8,latin1,chinese
+	"}
+
+" ctags
+set tags=./tags;,tags;
+
+" plugin config
+" cscope
+if has("cscope")
+
+    """"""""""""" Standard cscope/vim boilerplate
+
+    " use both cscope and ctag for 'ctrl-]', ':ta', and 'vim -t'
+    set cscopetag
+
+    " check cscope for definition of a symbol before checking ctags: set to 1
+    " if you want the reverse search order.
+    set csto=0
+	set cst
+	set csverb
+
+    " add any cscope database in current directory
+"    if filereadable("cscope.out")
+"        cs add cscope.out  
+    " else add the database pointed to by environment variable 
+"    elseif $CSCOPE_DB != ""
+"        cs add $CSCOPE_DB
+"    endif
+
+    " show msg when any other cscope db added
+    set cscopeverbose
+
+	" set quickfix
+	set cscopequickfix=s-,g-,c-,d-,i-,t-,e-
+endif
+
+" Update tags file
+function! TagsUpdate()
+	if !filereadable("cscope.file")&&!len(tagfiles())
+		if has ("unix")
+			exe "!find" . " `pwd`" . " -type f" . " -name" . " \"*.[c|h]*\"" . " > "
+						\. "cscope.files"
+			exe "!find" . " `pwd`" . " -type f" . " -name" . " \"*.mk*\"" . " >> "
+						\. "cscope.files"
+		else
+			exe "!dir /s /b"
+						\. "`pwd`" . "*.c"
+						\. "`pwd`" . "*.h"
+						\. "cscope.fi! les"
+		endif
+	endif
+
+	let g:SrcExpl_updateTagsCmd="ctags --sort=foldcase -L cscope.files"
+	let g:SrcExpl_updateTagsCmd="cscope -bkq"
+	call g:SrcExpl_UpdateTags()
+endfunction
+
+" Powerline
+"	let g:Powerline_symbols = 'fancy'
+"	let g:Powerline_symbols = 'unicode'
+"	let g:Powerline_colorscheme = 'skwp'
+
+" Air-line
+    let g:airline_theme='base16'
+    let g:airline#extensions#tabline#enabled = 1
+
+" YCM
+"	let g:ycm_extra_conf_globlist = ['~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/*','!~/*']
+	let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+
+" Syntastic
+	"let g:syntastic_c_checkers=['cppcheck']
+	let g:syntastic_c_checkers=['splint']
+	let g:syntastic_always_populate_loc_list = 1
+	let g:syntastic_check_on_open=1
+	let g:syntastic_enable_signs=1
+	let g:syntastic_error_symbol = '✗'
+	let g:syntastic_warning_symbol = '⚠'
+	set statusline+=%#warningmsg#
+	set statusline+=%{SyntasticStatuslineFlag()}
+	set statusline+=%*gbar
+
+" Tarbar
+	let g:tagbar_left = 1
+	let g:tagbar_width = 60
+
+" NERDTree
+	let NERDTreeQuitOnOpen=1
+	let NERDTreeShowFiles=1
+	let NERDTreeShowHidden=1
+	let NERDTreeStatusLine=1
+	let NERDTreeWinPos='Right'
+	let NERDTreeDirArrows=1
+
+" VIM-bookmark
+	highlight BookmarkLine guibg=Green ctermfg=NONE
+	let g:bookmark_highlight_lines=1
+
+" SrcExp
+    " // Enable/Disable the local definition searching, and note that this is not 
+    " // guaranteed to work, the Source Explorer doesn't check the syntax for now. 
+    " // It only searches for a match with the keyword according to command 'gd' 
+    let g:SrcExpl_searchLocalDef=1 
+
+    " // Do not let the Source Explorer update the tags file when opening 
+    let g:SrcExpl_isUpdateTags=0 
+
+
+    " // Set the height of Source Explorer window 
+    let g:SrcExpl_winHeight = 20 
+
+    " // Set 100 ms for refreshing the Source Explorer 
+    let g:SrcExpl_refreshTime = 100 
+
+" key mapping
+inoremap <A-h> <C-o>h
+inoremap <A-j> <C-o>j
+inoremap <A-k> <C-o>k
+inoremap <A-l> <C-o>l
+"imap jj <Esc>
+"imap hj <Esc>
+"imap jh <Esc>
+inoremap jj <Esc>
+inoremap hh <Esc>
+inoremap hj <Esc>
+inoremap jh <Esc>
+
+"nmap <F2> :TlistToggle<cr>
+nmap <leader>1 :TagbarToggle<cr>
+nmap <leader>2 :NERDTreeToggle<cr>
+"nmap <F2> :TrinityToggleTagList<cr>
+"nmap <F3> :TrinityToggleNERDTree<cr>
+"nmap <F4> :SrcExplToggle<cr>
+"nmap <F5> :TrinityToggleAll<cr>
+nmap <C-h> :noh<cr>
+nmap <leader>7 :bn<cr>
+nmap <leader>8 :bp<cr>
+"nmap <leader> :Dox<cr>
+
+" abt quickfix
+" :cw		open matched window
+" :cclose	close matched window
+" current map leadr is \
+"nmap <leader>cw :cw<cr>
+nmap <leader>5 :cw<cr>
+nmap <leader>6 :cclose<cr>
+nmap <leader>3 :cp<cr>
+nmap <leader>4 :cn<cr>
+
+" conque
+"nmap <leader>ctb :ConqueTermTab bash<cr>
+
+nmap <F12> :call TagsUpdate()<cr>
+"nmap <F5> :call CFiles()<cr>
