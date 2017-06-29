@@ -10,23 +10,6 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-"Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-"Plugin 'L9'
-" Git plugin not hosted on GitHub
-"Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-"Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
-"Plugin 'ascenator/L9', {'name': 'newL9'}
-
 " plug-in for YCM
 Plugin 'Valloric/YouCompleteMe'
 
@@ -108,41 +91,41 @@ if has("gui_running")
     set guifont=DejaVu\ Sans\ Mono\ 10
     set lines=32
     set columns=128
-	set mousemodel=popup
-	set guioptions+=b
-	set guioptions-=m
-	set guioptions-=T
+    set mousemodel=popup
+    set guioptions+=b
+    set guioptions-=m
+    set guioptions-=T
 else
     "set t_Co=256
     set background=dark
     "colorscheme solarized
     "colorscheme gruvbox
     "colorscheme dracula
-    colorscheme bensday
+    "colorscheme bensday
     "colorscheme bw
 endif
 
 " self config {
-	set nocompatible
-	set number
-	set ruler
-	set incsearch
-	set hlsearch
-	set tabstop=4
-	set softtabstop=4
-	set shiftwidth=4
-	set expandtab
-	set backspace=2
-	set mouse=a
-	"set mouse=v
-	set showmatch
-	set matchtime=2
-	set cursorline
-	set laststatus=2
-	set encoding=utf-8 " Necessary to show unicode glyphs
-	"set fileencodings=utf-8,chinese
-	set fileencodings=ucs-bom,utf-8,latin1,chinese
-	"}
+set nocompatible
+set number
+set ruler
+set incsearch
+set hlsearch
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set backspace=2
+set mouse=a
+"set mouse=v
+set showmatch
+set matchtime=2
+set cursorline
+set laststatus=2
+set encoding=utf-8 " Necessary to show unicode glyphs
+"set fileencodings=utf-8,chinese
+set fileencodings=ucs-bom,utf-8,latin1,chinese
+"}
 
 " ctags
 set tags=./tags;,tags;
@@ -159,43 +142,43 @@ if has("cscope")
     " check cscope for definition of a symbol before checking ctags: set to 1
     " if you want the reverse search order.
     set csto=0
-	set cst
-	set csverb
+    set cst
+    set csverb
 
     " add any cscope database in current directory
-"    if filereadable("cscope.out")
-"        cs add cscope.out  
+    "    if filereadable("cscope.out")
+    "        cs add cscope.out  
     " else add the database pointed to by environment variable 
-"    elseif $CSCOPE_DB != ""
-"        cs add $CSCOPE_DB
-"    endif
+    "    elseif $CSCOPE_DB != ""
+    "        cs add $CSCOPE_DB
+    "    endif
 
     " show msg when any other cscope db added
     set cscopeverbose
 
-	" set quickfix
-	set cscopequickfix=s-,g-,c-,d-,i-,t-,e-
+    " set quickfix
+    set cscopequickfix=s-,g-,c-,d-,i-,t-,e-
 endif
 
 " Update tags file
 function! TagsUpdate()
-	if !filereadable("cscope.file")&&!len(tagfiles())
-		if has ("unix")
-			exe "!find" . " `pwd`" . " -type f" . " -name" . " \"*.[c|h]*\"" . " > "
-						\. "cscope.files"
-			exe "!find" . " `pwd`" . " -type f" . " -name" . " \"*.mk*\"" . " >> "
-						\. "cscope.files"
-		else
-			exe "!dir /s /b"
-						\. "`pwd`" . "*.c"
-						\. "`pwd`" . "*.h"
-						\. "cscope.fi! les"
-		endif
-	endif
+    if !filereadable("cscope.file")&&!len(tagfiles())
+        if has ("unix")
+            exe "!find" . " `pwd`" . " -type f" . " -name" . " \"*.[c|h]*\"" . " > "
+                        \. "cscope.files"
+            exe "!find" . " `pwd`" . " -type f" . " -name" . " \"*.mk*\"" . " >> "
+                        \. "cscope.files"
+        else
+            exe "!dir /s /b"
+                        \. "`pwd`" . "*.c"
+                        \. "`pwd`" . "*.h"
+                        \. "cscope.fi! les"
+        endif
+    endif
 
-	let g:SrcExpl_updateTagsCmd="ctags --sort=foldcase -L cscope.files"
-	let g:SrcExpl_updateTagsCmd="cscope -bkq"
-	call g:SrcExpl_UpdateTags()
+    let g:SrcExpl_updateTagsCmd="ctags --sort=foldcase -L cscope.files"
+    let g:SrcExpl_updateTagsCmd="cscope -bkq"
+    call g:SrcExpl_UpdateTags()
 endfunction
 
 " Powerline
@@ -204,56 +187,56 @@ endfunction
 "	let g:Powerline_colorscheme = 'skwp'
 
 " Air-line
-    let g:airline_theme='base16'
-    let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='base16'
+let g:airline#extensions#tabline#enabled = 1
 
 " YCM
 "	let g:ycm_extra_conf_globlist = ['~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/*','!~/*']
-	let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
 " Syntastic
-	"let g:syntastic_c_checkers=['cppcheck']
-	let g:syntastic_c_checkers=['splint']
-	let g:syntastic_always_populate_loc_list = 1
-	let g:syntastic_check_on_open=1
-	let g:syntastic_enable_signs=1
-	let g:syntastic_error_symbol = '✗'
-	let g:syntastic_warning_symbol = '⚠'
-	set statusline+=%#warningmsg#
-	set statusline+=%{SyntasticStatuslineFlag()}
-	set statusline+=%*gbar
+"let g:syntastic_c_checkers=['cppcheck']
+let g:syntastic_c_checkers=['splint']
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_check_on_open=1
+let g:syntastic_enable_signs=1
+let g:syntastic_error_symbol = '✗'
+let g:syntastic_warning_symbol = '⚠'
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*gbar
 
 " Tarbar
-	let g:tagbar_left = 1
-	let g:tagbar_width = 60
+let g:tagbar_left = 1
+let g:tagbar_width = 60
 
 " NERDTree
-	let NERDTreeQuitOnOpen=1
-	let NERDTreeShowFiles=1
-	let NERDTreeShowHidden=1
-	let NERDTreeStatusLine=1
-	let NERDTreeWinPos='Right'
-	let NERDTreeDirArrows=1
+let NERDTreeQuitOnOpen=1
+let NERDTreeShowFiles=1
+let NERDTreeShowHidden=1
+let NERDTreeStatusLine=1
+let NERDTreeWinPos='Right'
+let NERDTreeDirArrows=1
 
 " VIM-bookmark
-	highlight BookmarkLine guibg=Green ctermfg=NONE
-	let g:bookmark_highlight_lines=1
+highlight BookmarkLine guibg=Green ctermfg=NONE
+let g:bookmark_highlight_lines=1
 
 " SrcExp
-    " // Enable/Disable the local definition searching, and note that this is not 
-    " // guaranteed to work, the Source Explorer doesn't check the syntax for now. 
-    " // It only searches for a match with the keyword according to command 'gd' 
-    let g:SrcExpl_searchLocalDef=1 
+" // Enable/Disable the local definition searching, and note that this is not 
+" // guaranteed to work, the Source Explorer doesn't check the syntax for now. 
+" // It only searches for a match with the keyword according to command 'gd' 
+let g:SrcExpl_searchLocalDef=1 
 
-    " // Do not let the Source Explorer update the tags file when opening 
-    let g:SrcExpl_isUpdateTags=0 
+" // Do not let the Source Explorer update the tags file when opening 
+let g:SrcExpl_isUpdateTags=0 
 
 
-    " // Set the height of Source Explorer window 
-    let g:SrcExpl_winHeight = 20 
+" // Set the height of Source Explorer window 
+let g:SrcExpl_winHeight = 20 
 
-    " // Set 100 ms for refreshing the Source Explorer 
-    let g:SrcExpl_refreshTime = 100 
+" // Set 100 ms for refreshing the Source Explorer 
+let g:SrcExpl_refreshTime = 100 
 
 " key mapping
 inoremap <A-h> <C-o>h
@@ -278,20 +261,14 @@ nmap <leader>2 :NERDTreeToggle<cr>
 nmap <C-h> :noh<cr>
 nmap <leader>7 :bn<cr>
 nmap <leader>8 :bp<cr>
-"nmap <leader> :Dox<cr>
 
 " abt quickfix
 " :cw		open matched window
 " :cclose	close matched window
 " current map leadr is \
-"nmap <leader>cw :cw<cr>
 nmap <leader>5 :cw<cr>
 nmap <leader>6 :cclose<cr>
 nmap <leader>3 :cp<cr>
 nmap <leader>4 :cn<cr>
 
-" conque
-"nmap <leader>ctb :ConqueTermTab bash<cr>
-
 nmap <F12> :call TagsUpdate()<cr>
-"nmap <F5> :call CFiles()<cr>
