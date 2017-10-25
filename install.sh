@@ -33,3 +33,6 @@ ln -s "$c_path"/vimrc_howchen "$HOME"/.vimrc
 echo ""
 echo "Env setup done, install VIM plugin..."
 vim +PluginInstall +qall
+
+echo ""
+echo "Enjoy..."
