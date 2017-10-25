@@ -10,8 +10,13 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+Plugin 'tpope/vim-fugitive'
+
 " plug-in for YCM
-"Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 
 " YCM-generator
 "Plugin 'rdnetto/YCM-Generator'
@@ -53,6 +58,9 @@ Plugin 'steffanc/cscopemaps.vim'
 " Latex
 "Plugin 'lervag/vimtex'
 
+" CtrlP
+Plugin 'ctrlpvim/ctrlp.vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 "filetype plugin indent on    " required
@@ -77,7 +85,7 @@ au BufRead,BufNewFile *.asm	let asmsyntax='armasm'|let filetype_inc='armasm'
 filetype plugin on
 filetype indent on
 syntax on
-set term=xterm
+set term=xterm-256color
 
 if has("gui_running")
     filetype plugin on
@@ -96,35 +104,35 @@ if has("gui_running")
     set guioptions-=m
     set guioptions-=T
 else
-    "set t_Co=256
-    set background=dark
+    set t_Co=256
     "colorscheme solarized
-    "colorscheme gruvbox
+    colorscheme gruvbox
     "colorscheme dracula
     "colorscheme bensday
     "colorscheme bw
+    set background=dark
 endif
 
 " self config {
-set nocompatible
-set number
-set ruler
-set incsearch
-set hlsearch
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set expandtab
-set backspace=2
-set mouse=a
-"set mouse=v
-set showmatch
-set matchtime=2
-set cursorline
-set laststatus=2
-set encoding=utf-8 " Necessary to show unicode glyphs
-"set fileencodings=utf-8,chinese
-set fileencodings=ucs-bom,utf-8,latin1,chinese
+    set nocompatible
+    set number
+    set ruler
+    set incsearch
+    set hlsearch
+    set tabstop=4
+    set softtabstop=4
+    set shiftwidth=4
+    set expandtab
+    set backspace=2
+    set mouse=a
+    "set mouse=v
+    set showmatch
+    set matchtime=2
+    set cursorline
+    set laststatus=2
+    set encoding=utf-8 " Necessary to show unicode glyphs
+    "set fileencodings=utf-8,chinese
+    set fileencodings=ucs-bom,utf-8,latin1,chinese
 "}
 
 " ctags
@@ -187,56 +195,57 @@ endfunction
 "	let g:Powerline_colorscheme = 'skwp'
 
 " Air-line
-let g:airline_theme='base16'
-let g:airline#extensions#tabline#enabled = 1
+"    let g:airline_theme='base16_shell'
+    let g:airline_solarized_bg='dark'
+    let g:airline#extensions#tabline#enabled = 1
 
 " YCM
 "	let g:ycm_extra_conf_globlist = ['~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/*','!~/*']
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+    let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
 " Syntastic
-"let g:syntastic_c_checkers=['cppcheck']
-let g:syntastic_c_checkers=['splint']
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_check_on_open=1
-let g:syntastic_enable_signs=1
-let g:syntastic_error_symbol = '✗'
-let g:syntastic_warning_symbol = '⚠'
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*gbar
+    "let g:syntastic_c_checkers=['cppcheck']
+    let g:syntastic_c_checkers=['splint']
+    let g:syntastic_always_populate_loc_list = 1
+    let g:syntastic_check_on_open=1
+    let g:syntastic_enable_signs=1
+    let g:syntastic_error_symbol = '✗'
+    let g:syntastic_warning_symbol = '⚠'
+    set statusline+=%#warningmsg#
+    set statusline+=%{SyntasticStatuslineFlag()}
+    set statusline+=%*gbar
 
 " Tarbar
-let g:tagbar_left = 1
-let g:tagbar_width = 60
+    let g:tagbar_left = 1
+    let g:tagbar_width = 60
 
 " NERDTree
-let NERDTreeQuitOnOpen=1
-let NERDTreeShowFiles=1
-let NERDTreeShowHidden=1
-let NERDTreeStatusLine=1
-let NERDTreeWinPos='Right'
-let NERDTreeDirArrows=1
+    let NERDTreeQuitOnOpen=1
+    let NERDTreeShowFiles=1
+    let NERDTreeShowHidden=1
+    let NERDTreeStatusLine=1
+    let NERDTreeWinPos='Right'
+    let NERDTreeDirArrows=1
 
 " VIM-bookmark
-highlight BookmarkLine guibg=Green ctermfg=NONE
-let g:bookmark_highlight_lines=1
+    highlight BookmarkLine guibg=Green ctermfg=NONE
+    let g:bookmark_highlight_lines=1
 
 " SrcExp
 " // Enable/Disable the local definition searching, and note that this is not 
 " // guaranteed to work, the Source Explorer doesn't check the syntax for now. 
 " // It only searches for a match with the keyword according to command 'gd' 
-let g:SrcExpl_searchLocalDef=1 
+"    let g:SrcExpl_searchLocalDef=1
 
-" // Do not let the Source Explorer update the tags file when opening 
-let g:SrcExpl_isUpdateTags=0 
+" // Do not let the Source Explorer update the tags file when opening
+"    let g:SrcExpl_isUpdateTags=0
 
 
-" // Set the height of Source Explorer window 
-let g:SrcExpl_winHeight = 20 
+" // Set the height of Source Explorer window
+"    let g:SrcExpl_winHeight = 20
 
-" // Set 100 ms for refreshing the Source Explorer 
-let g:SrcExpl_refreshTime = 100 
+" // Set 100 ms for refreshing the Source Explorer
+"    let g:SrcExpl_refreshTime = 100
 
 " key mapping
 inoremap <A-h> <C-o>h
