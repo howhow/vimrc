@@ -61,6 +61,9 @@ Plugin 'steffanc/cscopemaps.vim'
 " CtrlP
 Plugin 'ctrlpvim/ctrlp.vim'
 
+" ACK
+Plugin 'mileszs/ack.vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 "filetype plugin indent on    " required
@@ -135,7 +138,7 @@ endif
     set fileencodings=ucs-bom,utf-8,latin1,chinese
 "}
 
-" ctags
+" ctags {
 set tags=./tags;,tags;
 
 " plugin config
@@ -167,8 +170,9 @@ if has("cscope")
     " set quickfix
     set cscopequickfix=s-,g-,c-,d-,i-,t-,e-
 endif
+"}
 
-" Update tags file
+" Update tags file {
 function! TagsUpdate()
     if !filereadable("cscope.file")&&!len(tagfiles())
         if has ("unix")
@@ -188,22 +192,28 @@ function! TagsUpdate()
     let g:SrcExpl_updateTagsCmd="cscope -bkq"
     call g:SrcExpl_UpdateTags()
 endfunction
+"}
 
-" Powerline
+" Powerline {
 "	let g:Powerline_symbols = 'fancy'
 "	let g:Powerline_symbols = 'unicode'
 "	let g:Powerline_colorscheme = 'skwp'
+"}
 
-" Air-line
-"    let g:airline_theme='base16_shell'
-    let g:airline_solarized_bg='dark'
+" Air-line {
+    let g:airline_theme='base16'
+"    let g:airline_theme='luna'
+"    let g:airline_theme='solarized'
+"    let g:airline_solarized_bg='dark'
     let g:airline#extensions#tabline#enabled = 1
+"}
 
-" YCM
+" YCM {
 "	let g:ycm_extra_conf_globlist = ['~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/*','!~/*']
     let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+"}
 
-" Syntastic
+" Syntastic {
     "let g:syntastic_c_checkers=['cppcheck']
     let g:syntastic_c_checkers=['splint']
     let g:syntastic_always_populate_loc_list = 1
@@ -214,24 +224,39 @@ endfunction
     set statusline+=%#warningmsg#
     set statusline+=%{SyntasticStatuslineFlag()}
     set statusline+=%*gbar
+"}
 
-" Tarbar
+" Tarbar {
     let g:tagbar_left = 1
     let g:tagbar_width = 60
+"}
 
-" NERDTree
+" NERDTree {
     let NERDTreeQuitOnOpen=1
     let NERDTreeShowFiles=1
     let NERDTreeShowHidden=1
     let NERDTreeStatusLine=1
     let NERDTreeWinPos='Right'
     let NERDTreeDirArrows=1
+"}
 
-" VIM-bookmark
+" CtrlP {
+    set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.lib
+    let g:ctrlp_working_path_mode = 'ar'
+"}
+
+" Ack and Ag {
+    if executable('ag')
+        let g:ackprg = 'ag --nogroup --nocolor --column'
+    endif
+"}
+
+" VIM-bookmark {
     highlight BookmarkLine guibg=Green ctermfg=NONE
     let g:bookmark_highlight_lines=1
+"}
 
-" SrcExp
+" SrcExp {
 " // Enable/Disable the local definition searching, and note that this is not 
 " // guaranteed to work, the Source Explorer doesn't check the syntax for now. 
 " // It only searches for a match with the keyword according to command 'gd' 
@@ -246,38 +271,40 @@ endfunction
 
 " // Set 100 ms for refreshing the Source Explorer
 "    let g:SrcExpl_refreshTime = 100
+"}
 
-" key mapping
-inoremap <A-h> <C-o>h
-inoremap <A-j> <C-o>j
-inoremap <A-k> <C-o>k
-inoremap <A-l> <C-o>l
-"imap jj <Esc>
-"imap hj <Esc>
-"imap jh <Esc>
-inoremap jj <Esc>
-inoremap hh <Esc>
-inoremap hj <Esc>
-inoremap jh <Esc>
-
-"nmap <F2> :TlistToggle<cr>
-nmap <leader>1 :TagbarToggle<cr>
-nmap <leader>2 :NERDTreeToggle<cr>
-"nmap <F2> :TrinityToggleTagList<cr>
-"nmap <F3> :TrinityToggleNERDTree<cr>
-"nmap <F4> :SrcExplToggle<cr>
-"nmap <F5> :TrinityToggleAll<cr>
-nmap <C-h> :noh<cr>
-nmap <leader>7 :bn<cr>
-nmap <leader>8 :bp<cr>
-
-" abt quickfix
-" :cw		open matched window
-" :cclose	close matched window
-" current map leadr is \
-nmap <leader>5 :cw<cr>
-nmap <leader>6 :cclose<cr>
-nmap <leader>3 :cp<cr>
-nmap <leader>4 :cn<cr>
-
-nmap <F12> :call TagsUpdate()<cr>
+" key mapping {
+    inoremap <A-h> <C-o>h
+    inoremap <A-j> <C-o>j
+    inoremap <A-k> <C-o>k
+    inoremap <A-l> <C-o>l
+    "imap jj <Esc>
+    "imap hj <Esc>
+    "imap jh <Esc>
+    inoremap jj <Esc>
+    inoremap hh <Esc>
+    inoremap hj <Esc>
+    inoremap jh <Esc>
+    
+    "nmap <F2> :TlistToggle<cr>
+    nmap <leader>1 :TagbarToggle<cr>
+    nmap <leader>2 :NERDTreeToggle<cr>
+    "nmap <F2> :TrinityToggleTagList<cr>
+    "nmap <F3> :TrinityToggleNERDTree<cr>
+    "nmap <F4> :SrcExplToggle<cr>
+    "nmap <F5> :TrinityToggleAll<cr>
+    nmap <C-h> :noh<cr>
+    nmap <leader>7 :bn<cr>
+    nmap <leader>8 :bp<cr>
+    
+    " abt quickfix
+    " :cw		open matched window
+    " :cclose	close matched window
+    " current map leadr is \
+    nmap <leader>5 :cw<cr>
+    nmap <leader>6 :cclose<cr>
+    nmap <leader>3 :cp<cr>
+    nmap <leader>4 :cn<cr>
+    
+    nmap <F12> :call TagsUpdate()<cr>
+"}
