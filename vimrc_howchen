@@ -31,6 +31,13 @@ Plugin 'vim-airline/vim-airline-themes'
 " NerdTree
 Plugin 'scrooloose/nerdtree'
 
+" Commenter
+Plugin 'scrooloose/nerdcommenter'
+
+" UML
+Plugin 'scrooloose/vim-slumlord'
+Plugin 'aklt/plantuml-syntax'
+
 " tagbar
 Plugin 'majutsushi/tagbar'
 
@@ -58,15 +65,14 @@ Plugin 'steffanc/cscopemaps.vim'
 " Latex
 Plugin 'lervag/vimtex'
 
-" UML
-Plugin 'scrooloose/vim-slumlord'
-Plugin 'aklt/plantuml-syntax'
-
 " CtrlP
 Plugin 'ctrlpvim/ctrlp.vim'
 
 " ACK
 Plugin 'mileszs/ack.vim'
+
+" Easy motion
+Plugin 'easymotion/vim-easymotion'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
