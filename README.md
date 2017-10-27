@@ -15,7 +15,7 @@
 6. syntax checking: [syntastic](https://github.com/vim-syntastic/syntastic)
 7. searching: [CrtlP](https://github.com/kien/ctrlp.vim), [ack](https://github.com/mileszs/ack.vim)
 8. document: [LaTex](https://github.com/lervag/vimtex), [UML](https://github.com/scrooloose/vim-slumlord)
-9. tags: [tagbar](https://github.com/majutsushi/tagbar)
+9. code: [tagbar](https://github.com/majutsushi/tagbar), [cscope keymap](https://github.com/steffanc/cscopemaps.vim)
 
 *YCM need compile after download, please refer to the [guide](https://github.com/Valloric/YouCompleteMe#installation)
 
