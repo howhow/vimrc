@@ -1,10 +1,12 @@
 # Use github to sync vi config
 
 ## How to use
-1. [git](https://gist.github.com/derhuerst/1b15ff4652a867391f03) must be installed
+1. [git](https://git-scm.com/) must be installed, please refer to the [guide](https://gist.github.com/derhuerst/1b15ff4652a867391f03)
 2. git clone https://github.com/howhow/vimrc ~/.my_config/vim
 3. cd ~/.my_config/vim
 4. run install.sh vim gvim ctags cscope silversearcher-ag
+
+*you could clone to anywhere, but I like to save all my configs into one place
 
 ## Integrated plugins
 1. plugin manager: [Vundle](https://github.com/VundleVim/Vundle.vim)
