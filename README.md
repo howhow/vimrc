@@ -4,7 +4,7 @@
 1. [git](https://gist.github.com/derhuerst/1b15ff4652a867391f03) must be installed
 2. git clone https://github.com/howhow/vimrc ~/.my_config/vim
 3. cd ~/.my_config/vim
-4. run install.sh vim gvim ctags cscope
+4. run install.sh vim gvim ctags cscope silversearcher-ag
 
 ## Integrated plugins
 1. plugin manager: [Vundle](https://github.com/VundleVim/Vundle.vim)
