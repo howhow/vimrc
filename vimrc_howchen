@@ -56,7 +56,11 @@ Plugin 'steffanc/cscopemaps.vim'
 "Plugin 'mtth/scratch.vim'
 
 " Latex
-"Plugin 'lervag/vimtex'
+Plugin 'lervag/vimtex'
+
+" UML
+Plugin 'scrooloose/vim-slumlord'
+Plugin 'aklt/plantuml-syntax'
 
 " CtrlP
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -81,14 +85,13 @@ call vundle#end()            " required
 
 "execute pathogen#infect()
 
-au BufRead,BufNewFile *.s	let asmsyntax='gas'|let filetype_inc='gas'
-au BufRead,BufNewFile *.asm	let asmsyntax='armasm'|let filetype_inc='armasm'
 
-" filetype
+" filetype & syntax
 filetype plugin on
 filetype indent on
+au BufRead,BufNewFile *.s	let asmsyntax='gas'|let filetype_inc='gas'
+au BufRead,BufNewFile *.asm	let asmsyntax='armasm'|let filetype_inc='armasm'
 syntax on
-set term=xterm-256color
 
 if has("gui_running")
     filetype plugin on
@@ -107,6 +110,7 @@ if has("gui_running")
     set guioptions-=m
     set guioptions-=T
 else
+    set term=xterm-256color
     set t_Co=256
     "colorscheme solarized
     colorscheme gruvbox
@@ -193,6 +197,19 @@ function! TagsUpdate()
     call g:SrcExpl_UpdateTags()
 endfunction
 "}
+
+" EOL whitespace
+function! <SID>StripTrailingWhitespace()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    %s/\s\+$//e
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
 
 " Powerline {
 "	let g:Powerline_symbols = 'fancy'
@@ -307,4 +324,7 @@ endfunction
     nmap <leader>4 :cn<cr>
     
     nmap <F12> :call TagsUpdate()<cr>
+    nmap <silent> <Leader><space> :call <SID>StripTrailingWhitespace()<CR>
+    nmap <leader>wn :match Error /\s\+$/<CR>
+    nmap <leader>tn :match Error /\t/<CR>
 "}
