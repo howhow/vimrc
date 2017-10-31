@@ -1,4 +1,5 @@
 # Use github to sync vi config
+*Tested on Ubuntu14.04 and 16.04
 
 ## How to use
 1. [git](https://git-scm.com/) must be installed, please refer to the [guide](https://gist.github.com/derhuerst/1b15ff4652a867391f03)
@@ -15,12 +16,15 @@
 4. status line: [airline](https://github.com/vim-airline/vim-airline)
 5. color schemes: [solarized](https://github.com/altercation/solarized), [gruvbox](https://github.com/morhetz/gruvbox), [dracula](https://draculatheme.com/vim/)
 6. syntax checking: [syntastic](https://github.com/vim-syntastic/syntastic)
-7. searching: [CrtlP](https://github.com/ctrlpvim/ctrlp.vim), [ack](https://github.com/mileszs/ack.vim)
-8. document: [LaTex](https://github.com/lervag/vimtex), [UML](https://github.com/scrooloose/vim-slumlord)
-9. code: [tagbar](https://github.com/majutsushi/tagbar), [cscope keymap](https://github.com/steffanc/cscopemaps.vim)
+7. searching: [CrtlP](https://github.com/ctrlpvim/ctrlp.vim), [ack](https://github.com/mileszs/ack.vim), [vim-easymotion](https://github.com/easymotion/vim-easymotion)
+8. document: [vimtex](https://github.com/lervag/vimtex), [slumlord](https://github.com/scrooloose/vim-slumlord)
+9. code: [tagbar](https://github.com/majutsushi/tagbar), [cscopemaps](https://github.com/steffanc/cscopemaps.vim)
 
 *YCM need compile after download, please refer to the [guide](https://github.com/Valloric/YouCompleteMe#installation)
 
 ## Some features
 1. check tab and EOL whitespace
 2. update tag and cscope in vim
+
+## TODO
+Compile and install YCM in install.sh
