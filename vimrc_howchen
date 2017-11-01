@@ -168,8 +168,8 @@ if has("cscope")
 
     " add any cscope database in current directory
     "    if filereadable("cscope.out")
-    "        cs add cscope.out  
-    " else add the database pointed to by environment variable 
+    "        cs add cscope.out
+    " else add the database pointed to by environment variable
     "    elseif $CSCOPE_DB != ""
     "        cs add $CSCOPE_DB
     "    endif
@@ -279,10 +279,20 @@ endfunction
     let g:bookmark_highlight_lines=1
 "}
 
+" Easymotion {
+    let g:EasyMotion_smartcase = 1
+    "let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
+    map <Leader><leader>h <Plug>(easymotion-linebackward)
+    map <Leader><Leader>j <Plug>(easymotion-j)
+    map <Leader><Leader>k <Plug>(easymotion-k)
+    map <Leader><leader>l <Plug>(easymotion-lineforward)
+    map <Leader><leader>. <Plug>(easymotion-repeat)
+"}
+
 " SrcExp {
-" // Enable/Disable the local definition searching, and note that this is not 
-" // guaranteed to work, the Source Explorer doesn't check the syntax for now. 
-" // It only searches for a match with the keyword according to command 'gd' 
+" // Enable/Disable the local definition searching, and note that this is not
+" // guaranteed to work, the Source Explorer doesn't check the syntax for now.
+" // It only searches for a match with the keyword according to command 'gd'
 "    let g:SrcExpl_searchLocalDef=1
 
 " // Do not let the Source Explorer update the tags file when opening
@@ -308,7 +318,7 @@ endfunction
     inoremap hh <Esc>
     inoremap hj <Esc>
     inoremap jh <Esc>
-    
+
     "nmap <F2> :TlistToggle<cr>
     nmap <leader>1 :TagbarToggle<cr>
     nmap <leader>2 :NERDTreeToggle<cr>
@@ -319,7 +329,7 @@ endfunction
     nmap <C-h> :noh<cr>
     nmap <leader>7 :bn<cr>
     nmap <leader>8 :bp<cr>
-    
+
     " abt quickfix
     " :cw		open matched window
     " :cclose	close matched window
@@ -328,7 +338,7 @@ endfunction
     nmap <leader>6 :cclose<cr>
     nmap <leader>3 :cp<cr>
     nmap <leader>4 :cn<cr>
-    
+
     nmap <F12> :call TagsUpdate()<cr>
     nmap <silent> <Leader><space> :call <SID>StripTrailingWhitespace()<CR>
     nmap <leader>wn :match Error /\s\+$/<CR>
