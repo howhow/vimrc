@@ -2,12 +2,16 @@
 *Tested on Ubuntu14.04 and 16.04
 
 ## How to use
-1. [git](https://git-scm.com/) must be installed, please refer to the [guide](https://gist.github.com/derhuerst/1b15ff4652a867391f03)
+1. [git](https://git-scm.com/) and [vim](https://github.com/vim/vim) must be installed
 2. git clone https://github.com/howhow/vimrc ~/.my_config/vim
 3. cd ~/.my_config/vim
-4. run install.sh vim gvim ctags cscope silversearcher-ag
+4. run install.sh ctags cscope silversearcher-ag
 
 *you could clone to anywhere, but I like to save all my configs into one place
+
+*[git installation guide](https://gist.github.com/derhuerst/1b15ff4652a867391f03)
+
+*[vim installation guide](https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source)
 
 ## Integrated plugins
 1. plugin manager: [Vundle](https://github.com/VundleVim/Vundle.vim)
