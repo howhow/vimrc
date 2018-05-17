@@ -99,14 +99,13 @@ au BufRead,BufNewFile *.s	let asmsyntax='gas'|let filetype_inc='gas'
 au BufRead,BufNewFile *.asm	let asmsyntax='armasm'|let filetype_inc='armasm'
 syntax on
 
+" color scheme list
+" solarized
+" gruvbox
+" dracula
 if has("gui_running")
-    filetype plugin on
-    filetype indent on
-    syntax on
     set background=dark
-    "colorscheme solarized
     colorscheme gruvbox
-    "colorscheme dracula
     hi cursorline guibg=#5f0000
     set guifont=DejaVu\ Sans\ Mono\ 10
     set lines=32
@@ -116,14 +115,11 @@ if has("gui_running")
     set guioptions-=m
     set guioptions-=T
 else
-    set term=xterm-256color
-    set t_Co=256
-    "colorscheme solarized
-    colorscheme gruvbox
-    "colorscheme dracula
-    "colorscheme bensday
-    "colorscheme bw
-    set background=dark
+    "set term=xterm-256color
+    "set t_Co=256
+    "colorscheme gruvbox
+    colorscheme bw
+    "set background=dark
 endif
 
 " self config {
@@ -149,7 +145,7 @@ endif
 "}
 
 " ctags {
-set tags=./tags;,tags;
+set tags=./tags,tags;
 
 " plugin config
 " cscope
@@ -185,22 +181,40 @@ endif
 " Update tags file {
 function! TagsUpdate()
     if !filereadable("cscope.file")&&!len(tagfiles())
-        if has ("unix")
-            exe "!find" . " `pwd`" . " -type f" . " -name" . " \"*.[c|h]*\"" . " > "
-                        \. "cscope.files"
-            exe "!find" . " `pwd`" . " -type f" . " -name" . " \"*.mk*\"" . " >> "
-                        \. "cscope.files"
-        else
-            exe "!dir /s /b"
-                        \. "`pwd`" . "*.c"
-                        \. "`pwd`" . "*.h"
-                        \. "cscope.fi! les"
-        endif
+        exe "!find" . " `pwd`" . " -type f" . " -name" . " \"*.[c|h]*\"" . " > "
+                    \. "cscope.files"
+        exe "!find" . " `pwd`" . " -type f" . " -name" . " \"*.asm*\"" . " > "
+                    \. "cscope.files"
+        exe "!find" . " `pwd`" . " -type f" . " -name" . " \"*.mk*\"" . " >> "
+                    \. "cscope.files"
+        exe "!find" . " `pwd`" . " -type f" . " -name" . " \"*.config*\"" . " >> "
+                    \. "cscope.files"
+        exe "!find" . " `pwd`" . " -type f" . " -name" . " \"*.in*\"" . " >> "
+                    \. "cscope.files"
     endif
 
-    let g:SrcExpl_updateTagsCmd="ctags --sort=foldcase -L cscope.files"
-    let g:SrcExpl_updateTagsCmd="cscope -bkq"
-    call g:SrcExpl_UpdateTags()
+"    let g:SrcExpl_updateTagsCmd="cscope -bkq"
+"    let g:SrcExpl_updateTagsCmd="ctags --sort=foldcase -L cscope.files"
+"    call g:SrcExpl_UpdateTags()
+   exe "!cscope -bkq"
+   exe "!ctags --sort=foldcase -L cscope.files"
+endfunction
+"}
+
+" Update cscope and ctags {
+function! CscopeTagUpdate()
+    exe "!find" . " `pwd`" . " -type f" . " -name" . " \"*.[c|h]*\"" . " > "
+                \. "cscope.files"
+    exe "!find" . " `pwd`" . " -type f" . " -name" . " \"*.asm*\"" . " > "
+                \. "cscope.files"
+    exe "!find" . " `pwd`" . " -type f" . " -name" . " \"*.s*\"" . " > "
+                \. "cscope.files"
+    exe "!find" . " `pwd`" . " -type f" . " -name" . " \"*.mk*\"" . " >> "
+                \. "cscope.files"
+    exe "!find" . " `pwd`" . " -type f" . " -name" . " \"*.config*\"" . " >> "
+                \. "cscope.files"
+    exe "!find" . " `pwd`" . " -type f" . " -name" . " \"*.in*\"" . " >> "
+                \. "cscope.files"
 endfunction
 "}
 
@@ -217,12 +231,13 @@ function! <SID>StripTrailingWhitespace()
     call cursor(l, c)
 endfunction
 
+if has("gui_running")
 " Powerline {
-"	let g:Powerline_symbols = 'fancy'
+	let g:Powerline_symbols = 'fancy'
 "	let g:Powerline_symbols = 'unicode'
-"	let g:Powerline_colorscheme = 'skwp'
+	let g:Powerline_colorscheme = 'skwp'
 "}
-
+else
 " Air-line {
     let g:airline_theme='base16'
 "    let g:airline_theme='luna'
@@ -230,6 +245,7 @@ endfunction
 "    let g:airline_solarized_bg='dark'
     let g:airline#extensions#tabline#enabled = 1
 "}
+endif
 
 " YCM {
 "	let g:ycm_extra_conf_globlist = ['~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/*','!~/*']
@@ -242,8 +258,13 @@ endfunction
     let g:syntastic_always_populate_loc_list = 1
     let g:syntastic_check_on_open=1
     let g:syntastic_enable_signs=1
+if has("gui_running")
     let g:syntastic_error_symbol = '✗'
     let g:syntastic_warning_symbol = '⚠'
+else
+    let g:syntastic_error_symbol = 'x'
+    let g:syntastic_warning_symbol = '!'
+endif
     set statusline+=%#warningmsg#
     set statusline+=%{SyntasticStatuslineFlag()}
     set statusline+=%*gbar
@@ -261,10 +282,17 @@ endfunction
     let NERDTreeStatusLine=1
     let NERDTreeWinPos='Right'
     let NERDTreeDirArrows=1
+if has("gui_running")
+    let g:NERDTreeDirArrowExpandable = '▸'
+    let g:NERDTreeDirArrowCollapsible = '▾'
+else
+    let g:NERDTreeDirArrowExpandable = '>'
+    let g:NERDTreeDirArrowCollapsible = '|'
+endif
 "}
 
 " CtrlP {
-    set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.lib
+    set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.lib,*.a
     let g:ctrlp_working_path_mode = 'ar'
 "}
 
@@ -339,7 +367,8 @@ endfunction
     nmap <leader>3 :cp<cr>
     nmap <leader>4 :cn<cr>
 
-    nmap <F12> :call TagsUpdate()<cr>
+"    nmap <F12> :call TagsUpdate()<cr>
+    nmap <F12> :call CscopeTagUpdate()<cr>
     nmap <silent> <Leader><space> :call <SID>StripTrailingWhitespace()<CR>
     nmap <leader>wn :match Error /\s\+$/<CR>
     nmap <leader>tn :match Error /\t/<CR>
