@@ -97,13 +97,17 @@ filetype plugin on
 filetype indent on
 au BufRead,BufNewFile *.s	let asmsyntax='gas'|let filetype_inc='gas'
 au BufRead,BufNewFile *.asm	let asmsyntax='armasm'|let filetype_inc='armasm'
-syntax on
+
+if has("unix") && strlen($MYVIMRC) < 1
+  let $MYVIMRC=$HOME . '/.vimrc'
+endif
 
 " color scheme list
 " solarized
 " gruvbox
 " dracula
 if has("gui_running")
+    syntax on
     set background=dark
     colorscheme gruvbox
     hi cursorline guibg=#5f0000
@@ -118,8 +122,8 @@ else
     "set term=xterm-256color
     "set t_Co=256
     "colorscheme gruvbox
-    colorscheme bw
-    "set background=dark
+    "colorscheme bw
+    set background=dark
 endif
 
 " self config {
@@ -294,6 +298,19 @@ endif
 " CtrlP {
     set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.lib,*.a
     let g:ctrlp_working_path_mode = 'ar'
+    let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:10'
+
+    " The Silver Searcher
+    if executable('ag')
+      " Use ag over grep
+      set grepprg=ag\ --nogroup\ --nocolor
+
+      " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+      let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+      " ag is fast enough that CtrlP doesn't need to cache
+      let g:ctrlp_use_caching = 0
+    endif
 "}
 
 " Ack and Ag {
@@ -335,6 +352,9 @@ endif
 "}
 
 " key mapping {
+    noremap <leader>r :new $MYVIMRC<CR>
+    noremap <silent> <leader>R :source $MYVIMRC<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+
     inoremap <A-h> <C-o>h
     inoremap <A-j> <C-o>j
     inoremap <A-k> <C-o>k
