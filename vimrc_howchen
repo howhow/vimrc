@@ -243,7 +243,7 @@ if has("gui_running")
 "}
 else
 " Air-line {
-    let g:airline_theme='base16'
+"    let g:airline_theme='base16'
 "    let g:airline_theme='luna'
 "    let g:airline_theme='solarized'
 "    let g:airline_solarized_bg='dark'
