@@ -20,7 +20,7 @@
 4. status line: [airline](https://github.com/vim-airline/vim-airline)
 5. color schemes: [solarized](https://github.com/altercation/solarized), [gruvbox](https://github.com/morhetz/gruvbox), [dracula](https://draculatheme.com/vim/)
 6. syntax checking: [syntastic](https://github.com/vim-syntastic/syntastic)
-7. searching: [CrtlP](https://github.com/ctrlpvim/ctrlp.vim), [ack](https://github.com/mileszs/ack.vim), [vim-easymotion](https://github.com/easymotion/vim-easymotion)
+7. searching: ~~[CrtlP](https://github.com/ctrlpvim/ctrlp.vim)~~, [ack](https://github.com/mileszs/ack.vim), [vim-easymotion](https://github.com/easymotion/vim-easymotion)
 8. document: [vimtex](https://github.com/lervag/vimtex), [slumlord](https://github.com/scrooloose/vim-slumlord)
 9. code: [tagbar](https://github.com/majutsushi/tagbar), [cscopemaps](https://github.com/steffanc/cscopemaps.vim)
 
@@ -31,4 +31,5 @@
 2. update tag and cscope in vim
 
 ## TODO
-Compile and install YCM in install.sh
+- [x] Compile and install YCM in install.sh
+- [ ] More error handling
