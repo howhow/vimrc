@@ -32,4 +32,6 @@
 
 ## TODO
 - [x] Compile and install YCM in install.sh
-- [ ] More error handling
+- [ ] Migrate all plugins to async in order to fast vi speed
+- [ ] Migrate from Vundle to [vim-plug](https://github.com/junegunn/vim-plug)
+- [ ] More error handling in install.sh
