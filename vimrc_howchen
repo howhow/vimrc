@@ -70,12 +70,10 @@ Plugin 'steffanc/cscopemaps.vim'
 Plugin 'lervag/vimtex'
 
 " use fzf as file search, easy and fast then ctrlp and command-t
-" CtrlP
+" CtrlP, command-t and leaderF for backup, not load now
 " Plugin 'ctrlpvim/ctrlp.vim'
-
-" use fzf as file search
-" command T
 " Plugin 'wincent/command-t'
+"Plugin 'Yggdroot/LeaderF'
 
 " ACK
 Plugin 'mileszs/ack.vim'
@@ -137,8 +135,12 @@ endif
 
 " self config {
     set nocompatible
-    set number
-    set ruler
+    set scrolloff=4 " 4 lines above/below cursor when scrolling
+    set ignorecase  " case insensitive
+    set smartcase   " but become case sensitive if typr uppercase
+    set number      " show line number
+    set ruler       " show cursor position in status bar
+    set title       " show file in titlebar
     set incsearch
     set hlsearch
     set tabstop=4
@@ -151,8 +153,8 @@ endif
     set showmatch
     set matchtime=2
     set cursorline
-    set laststatus=2
-    set encoding=utf-8 " Necessary to show unicode glyphs
+    set laststatus=2    "statusline always on
+    set encoding=utf-8  " Necessary to show unicode glyphs
     set fileencodings=ucs-bom,utf-8,latin1,chinese
 "}
 
@@ -362,6 +364,12 @@ endif
 " key mapping {
     noremap <leader>r :new $MYVIMRC<CR>
     noremap <silent> <leader>R :source $MYVIMRC<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+
+    " FZF mapping
+    nmap <leader>f :FZF<cr>
+
+    " Ack
+    nnoremap <leader>a :Ack!<Space><C-R>=expand("<cword>")<CR>
 
     inoremap <A-h> <C-o>h
     inoremap <A-j> <C-o>j
