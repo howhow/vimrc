@@ -32,18 +32,16 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
-" NerdTree
-Plugin 'scrooloose/nerdtree'
+" use LeaderF instead nerdtree and tagbar
+"Plugin 'scrooloose/nerdtree'
+"Plugin 'majutsushi/tagbar'
 
 " Commenter
-Plugin 'scrooloose/nerdcommenter'
+"Plugin 'scrooloose/nerdcommenter'
 
 " UML
-Plugin 'scrooloose/vim-slumlord'
-Plugin 'aklt/plantuml-syntax'
-
-" tagbar
-Plugin 'majutsushi/tagbar'
+"Plugin 'scrooloose/vim-slumlord'
+"Plugin 'aklt/plantuml-syntax'
 
 " color
 Plugin 'flazz/vim-colorschemes'
@@ -73,7 +71,7 @@ Plugin 'lervag/vimtex'
 " CtrlP, command-t and leaderF for backup, not load now
 " Plugin 'ctrlpvim/ctrlp.vim'
 " Plugin 'wincent/command-t'
-"Plugin 'Yggdroot/LeaderF'
+Plugin 'Yggdroot/LeaderF'
 
 " ACK
 Plugin 'mileszs/ack.vim'
@@ -188,7 +186,7 @@ if has("cscope")
     set cscopeverbose
 
     " set quickfix
-    set cscopequickfix=s-,g-,c-,d-,i-,t-,e-
+    "set cscopequickfix=s-,g-,c-,d-,i-,t-,e-
 endif
 "}
 
@@ -368,8 +366,8 @@ endif
     " FZF mapping
     nmap <leader>f :FZF<cr>
 
-    " Ack
-    nnoremap <leader>a :Ack!<Space><C-R>=expand("<cword>")<CR>
+    " Ack,  don't jump to first result automatically
+    nnoremap <leader>a :Ack!<Space><C-R>=expand("<cword>")<CR><CR>
 
     inoremap <A-h> <C-o>h
     inoremap <A-j> <C-o>j
