@@ -49,8 +49,9 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'morhetz/gruvbox'
 Plugin 'dracula/vim'
 
-" syntastic
-Plugin 'scrooloose/syntastic'
+" use ALE to instead of syntastic
+"Plugin 'scrooloose/syntastic'
+Plugin 'w0rp/ale'
 
 " plug-in for color_code
 "Plugin 'jeaye/color_coded'
@@ -65,7 +66,7 @@ Plugin 'steffanc/cscopemaps.vim'
 "Plugin 'mtth/scratch.vim'
 
 " Latex
-Plugin 'lervag/vimtex'
+"Plugin 'lervag/vimtex'
 
 " use fzf as file search, easy and fast then ctrlp and command-t
 " CtrlP, command-t and leaderF for backup, not load now
@@ -186,7 +187,7 @@ if has("cscope")
     set cscopeverbose
 
     " set quickfix
-    "set cscopequickfix=s-,g-,c-,d-,i-,t-,e-
+    set cscopequickfix=s-,g-,c-,d-,i-,t-,e-
 endif
 "}
 
@@ -265,42 +266,58 @@ endif
 "}
 
 " Syntastic {
-    "let g:syntastic_c_checkers=['cppcheck']
-    let g:syntastic_c_checkers=['splint']
-    let g:syntastic_always_populate_loc_list = 1
-    let g:syntastic_check_on_open=1
-    let g:syntastic_enable_signs=1
-if has("gui_running")
-    let g:syntastic_error_symbol = '✗'
-    let g:syntastic_warning_symbol = '⚠'
-else
-    let g:syntastic_error_symbol = 'x'
-    let g:syntastic_warning_symbol = '!'
-endif
-    set statusline+=%#warningmsg#
-    set statusline+=%{SyntasticStatuslineFlag()}
-    set statusline+=%*gbar
+"    let g:syntastic_c_checkers=['cppcheck']
+"    let g:syntastic_c_checkers=['splint']
+"    let g:syntastic_always_populate_loc_list = 1
+"    let g:syntastic_check_on_open=1
+"    let g:syntastic_enable_signs=1
+"if has("gui_running")
+"    let g:syntastic_error_symbol = '✗'
+"    let g:syntastic_warning_symbol = '⚠'
+"else
+"    let g:syntastic_error_symbol = 'x'
+"    let g:syntastic_warning_symbol = '!'
+"endif
+"    set statusline+=%#warningmsg#
+"    set statusline+=%{SyntasticStatuslineFlag()}
+"    set statusline+=%*gbar
 "}
 
-" Tarbar {
-    let g:tagbar_left = 1
-    let g:tagbar_width = 60
+" ALE "
+    let g:ale_linters = {
+    \   'c':['cppcheck', 'gcc'],
+    \   'bash':['shellcheck'],
+    \}
+    let g:ale_echo_msg_format = '[%linter%][%severity%]%code: %%s'
+    let g:ale_lint_on_text_changed = 'normal'
+    let g:ale_lint_on_insert_leave = 1
+    let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
+    let g:ale_sign_error = 'x'
+    let g:ale_sign_warning = '!'
+    let g:airline#extensions#ale#enabled = 1
+    let g:ale_set_loclist = 0
+    let g:ale_set_quickfix = 1
+"}
+
+" Tagbar {
+"    let g:tagbar_left = 1
+"    let g:tagbar_width = 60
 "}
 
 " NERDTree {
-    let NERDTreeQuitOnOpen=1
-    let NERDTreeShowFiles=1
-    let NERDTreeShowHidden=1
-    let NERDTreeStatusLine=1
-    let NERDTreeWinPos='Right'
-    let NERDTreeDirArrows=1
-if has("gui_running")
-    let g:NERDTreeDirArrowExpandable = '▸'
-    let g:NERDTreeDirArrowCollapsible = '▾'
-else
-    let g:NERDTreeDirArrowExpandable = '>'
-    let g:NERDTreeDirArrowCollapsible = '|'
-endif
+"    let NERDTreeQuitOnOpen=1
+"    let NERDTreeShowFiles=1
+"    let NERDTreeShowHidden=1
+"    let NERDTreeStatusLine=1
+"    let NERDTreeWinPos='Right'
+"    let NERDTreeDirArrows=1
+"if has("gui_running")
+"    let g:NERDTreeDirArrowExpandable = '▸'
+"    let g:NERDTreeDirArrowCollapsible = '▾'
+"else
+"    let g:NERDTreeDirArrowExpandable = '>'
+"    let g:NERDTreeDirArrowCollapsible = '|'
+"endif
 "}
 
 " CtrlP {
@@ -328,8 +345,8 @@ endif
 "}
 
 " VIM-bookmark {
-    highlight BookmarkLine guibg=Green ctermfg=NONE
-    let g:bookmark_highlight_lines=1
+"    highlight BookmarkLine guibg=Green ctermfg=NONE
+"   let g:bookmark_highlight_lines=1
 "}
 
 " Easymotion {
@@ -366,6 +383,9 @@ endif
     " FZF mapping
     nmap <leader>f :FZF<cr>
 
+    " LeaderF mapping
+    nmap <leader>F :LeaderfFunction!<cr>
+
     " Ack,  don't jump to first result automatically
     nnoremap <leader>a :Ack!<Space><C-R>=expand("<cword>")<CR><CR>
 
@@ -373,17 +393,17 @@ endif
     inoremap <A-j> <C-o>j
     inoremap <A-k> <C-o>k
     inoremap <A-l> <C-o>l
-    "imap jj <Esc>
-    "imap hj <Esc>
-    "imap jh <Esc>
+"    imap jj <Esc>
+"    imap hj <Esc>
+"    imap jh <Esc>
     inoremap jj <Esc>
     inoremap hh <Esc>
     inoremap hj <Esc>
     inoremap jh <Esc>
 
-    nmap <leader>1 :TagbarToggle<cr>
-    nmap <leader>2 :NERDTreeToggle<cr>
-    "nmap <F4> :SrcExplToggle<cr>
+"    nmap <leader>1 :TagbarToggle<cr>
+"    nmap <leader>2 :NERDTreeToggle<cr>
+"    nmap <F4> :SrcExplToggle<cr>
     nmap <C-h> :noh<cr>
     nmap <leader>7 :bn<cr>
     nmap <leader>8 :bp<cr>
