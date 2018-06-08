@@ -2,19 +2,21 @@
 *Tested on Ubuntu14.04 and 16.04
 
 ## How to use
-1. [git](https://git-scm.com/)* and [vim](https://github.com/vim/vim)* must be installed
+[git](https://git-scm.com/)* and [vim](https://github.com/vim/vim)* must be installed
 ```
-    git clone https://github.com/howhow/vimrc ~/.my_config/vim
-    cd ~/.my_config/vim
-    ./install.sh cmake ctags cscope python2.7 silversearcher-ag
+  git clone https://github.com/howhow/vimrc ~/.my_config/vim
+  cd ~/.my_config/vim
+  ./install.sh cmake ctags cscope python2.7 silversearcher-ag
 ```
-*if os is `ubuntu-14.04`, please install `cmake3`
+**NOTE**: On older systems (e.g. Ubuntu 14.04) you may run into compilation
+issues with `cmake`. Therefore, install the following instead:
+```
+  ./install.sh cmake3 ctags cscope python2.7 silversearcher-ag
+```
 
-*you could clone to anywhere, but I like to save all my configs into one place
-
-*[git installation guide](https://gist.github.com/derhuerst/1b15ff4652a867391f03)
-
-*[vim installation guide](https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source)
+- you could clone to anywhere, but I like to save all my configs into one place
+- [git installation guide](https://gist.github.com/derhuerst/1b15ff4652a867391f03)
+- [vim installation guide](https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source)
 
 ## Integrated plugins
 1. plugin manager: [Vundle](https://github.com/VundleVim/Vundle.vim)
