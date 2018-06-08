@@ -17,6 +17,7 @@ issues with `cmake`. Therefore, install the following instead:
 - you could clone to anywhere, but I like to save all my configs into one place
 - [git installation guide](https://gist.github.com/derhuerst/1b15ff4652a867391f03)
 - [vim installation guide](https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source)
+  - vim version must higer than 8.0
 
 ## Integrated plugins
 1. plugin manager: [Vundle](https://github.com/VundleVim/Vundle.vim)
@@ -38,5 +39,4 @@ issues with `cmake`. Therefore, install the following instead:
 ## TODO
 - [x] Compile and install YCM in install.sh
 - [ ] Migrate all plugins to async in order to fast vi speed
-- [ ] Migrate from Vundle to [vim-plug](https://github.com/junegunn/vim-plug)
 - [ ] More error handling in install.sh
