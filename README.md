@@ -30,7 +30,7 @@ issues with `cmake`. Therefore, install the following instead:
 8. document: [vimtex](https://github.com/lervag/vimtex), ~~[slumlord](https://github.com/scrooloose/vim-slumlord)~~
 9. code: ~~[tagbar](https://github.com/majutsushi/tagbar)~~, [cscopemaps](https://github.com/steffanc/cscopemaps.vim)
 
-*YCM need compile after download, please refer to the [guide](https://github.com/Valloric/YouCompleteMe#installation)
+*YCM need compile after download, if fail to use `install.sh`, please refer to the [guide](https://github.com/Valloric/YouCompleteMe#installation)
 
 ## Some features
 1. check tab and EOL whitespace
