@@ -3,9 +3,12 @@
 
 ## How to use
 1. [git](https://git-scm.com/)* and [vim](https://github.com/vim/vim)* must be installed
-2. git clone https://github.com/howhow/vimrc ~/.my_config/vim
-3. cd ~/.my_config/vim
-4. ./install.sh cmake ctags cscope python2.7 silversearcher-ag
+```
+    git clone https://github.com/howhow/vimrc ~/.my_config/vim
+    cd ~/.my_config/vim
+    ./install.sh cmake ctags cscope python2.7 silversearcher-ag
+```
+*if os is `ubuntu-14.04`, please install `cmake3`
 
 *you could clone to anywhere, but I like to save all my configs into one place
 
