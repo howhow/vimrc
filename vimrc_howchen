@@ -197,7 +197,7 @@ endfunction
     let g:gutentags_auto_add_gtags_cscope = 0
 
     " switch to quickfix window automaticlly
-    g:gutentags_plus_switch=1
+    let g:gutentags_plus_switch=1
 "}
 
 " status line config
