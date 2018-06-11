@@ -24,11 +24,11 @@ issues with `cmake`. Therefore, install the following instead:
 2. git: [fugitive](https://github.com/tpope/vim-fugitive)
 3. complete: [YouCompleteMe](https://github.com/Valloric/YouCompleteMe)*
 4. status line: [airline](https://github.com/vim-airline/vim-airline)
-5. color schemes: [solarized](https://github.com/altercation/solarized), [gruvbox](https://github.com/morhetz/gruvbox), [dracula](https://draculatheme.com/vim/)
+5. color schemes: [gruvbox](https://github.com/morhetz/gruvbox), ~~[solarized](https://github.com/altercation/solarized)~~, ~~[dracula](https://draculatheme.com/vim/)~~
 6. syntax checking: ~~[syntastic](https://github.com/vim-syntastic/syntastic)~~, [ale](https://github.com/w0rp/ale)
 7. searching: ~~[CrtlP](https://github.com/ctrlpvim/ctrlp.vim)~~,[LeaderF](https://github.com/Yggdroot/LeaderF), [fzf](https://github.com/junegunn/fzf), [ack](https://github.com/mileszs/ack.vim), [vim-easymotion](https://github.com/easymotion/vim-easymotion)
 8. document: [vimtex](https://github.com/lervag/vimtex), ~~[slumlord](https://github.com/scrooloose/vim-slumlord)~~
-9. code: ~~[tagbar](https://github.com/majutsushi/tagbar)~~, [cscopemaps](https://github.com/steffanc/cscopemaps.vim)
+9. code: ~~[tagbar](https://github.com/majutsushi/tagbar)~~, ~~[cscopemaps](https://github.com/steffanc/cscopemaps.vim)~~, [gutentags](https://github.com/ludovicchabant/vim-gutentags), [gutentags_plus](https://github.com/skywind3000/gutentags_plus)
 
 *YCM need compile after download, if fail to use `install.sh`, please refer to the [guide](https://github.com/Valloric/YouCompleteMe#installation)
 
