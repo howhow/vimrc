@@ -34,7 +34,35 @@ issues with `cmake`. Therefore, install the following instead:
 
 ## Some features
 1. check tab and EOL whitespace
-2. update tag and cscope in vim
+2. update tags in async mode by gutentags
+
+## Keymaps
+
+| keymap | desc |
+|--------|------|
+| `\` | leader |
+| `<leader>f` | Open file list |
+| `<leader>F` | Open current file function list |
+| `<leader>a` | Grep current word under cursor |
+| `jj`/`hh`/`hj`/`jh` | Exit insert mode |
+| `<leader>3` | Open qucikfix window |
+| `<leader>4` | Close qucikfix window |
+| `<leader>5` | Next qucikfix item |
+| `<leader>6` | Previous qucikfix item |
+| `<leader>7` | Next file buffer |
+| `<leader>8` | Previous file buffer |
+| `<leader>cs` | Find symbol (reference) under cursor |
+| `<leader>cg` | Find symbol definition under cursor |
+| `<leader>cd` | Functions called by this function |
+| `<leader>cc` | Functions calling this function |
+| `<leader>ct` | Find text string under cursor |
+| `<leader>ce` | Find egrep pattern under cursor |
+| `<leader>cf` | Find file name under cursor |
+| `<leader>ci` | Find files #including the file name under cursor |
+| `<leader>ca` | Find places where current symbol is assigned |
+| `<leader><space>` | Strip trail white space |
+| `<leader>wn` | Find trailing white space |
+| `<leader>tn` | Find tab |
 
 ## TODO
 - [x] Compile and install YCM in install.sh
