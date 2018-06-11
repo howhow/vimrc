@@ -45,10 +45,10 @@ Plugin 'vim-airline/vim-airline-themes'
 "Plugin 'aklt/plantuml-syntax'
 
 " color
-Plugin 'flazz/vim-colorschemes'
-Plugin 'altercation/vim-colors-solarized'
+"Plugin 'flazz/vim-colorschemes'
+"Plugin 'altercation/vim-colors-solarized'
+"Plugin 'dracula/vim'   "dracula
 Plugin 'morhetz/gruvbox'
-Plugin 'dracula/vim'
 
 " use ALE to instead of syntastic
 Plugin 'w0rp/ale'
@@ -61,7 +61,7 @@ Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'skywind3000/gutentags_plus'
 
 " scratch
-Plugin 'mtth/scratch.vim'
+"Plugin 'mtth/scratch.vim'
 
 " Latex
 "Plugin 'lervag/vimtex'
