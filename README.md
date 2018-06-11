@@ -2,7 +2,7 @@
 *Tested on Ubuntu14.04 and 16.04
 
 ## How to use
-[git](https://git-scm.com/)* and [vim](https://github.com/vim/vim)* must be installed
+[git](https://git-scm.com/), [vim](https://github.com/vim/vim) and [gtags](https://www.gnu.org/software/global/global.html)* must be installed
 ```
 git clone https://github.com/howhow/vimrc ~/.my_config/vim
 cd ~/.my_config/vim
@@ -16,6 +16,14 @@ issues with `cmake`. Therefore, install the following instead:
 
 - you could clone to anywhere, but I like to save all my configs into one place
 - [git installation guide](https://gist.github.com/derhuerst/1b15ff4652a867391f03)
+- [gtags installtion guide](https://www.gnu.org/software/global/download.html)
+```
+  download latest gtags from: <https://www.gnu.org/software/global/download.html> and unzip it
+  cd <unzipped_path>
+  ./configure
+  make
+  make install
+```
 - [vim installation guide](https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source)
   - vim version must higer than 8.0
 
@@ -60,7 +68,7 @@ issues with `cmake`. Therefore, install the following instead:
 | `<leader>cf` | Find file name under cursor |
 | `<leader>ci` | Find files #including the file name under cursor |
 | `<leader>ca` | Find places where current symbol is assigned |
-| `<leader><space>` | Strip trail white space |
+| `<leader><space>` | Strip trailing white space |
 | `<leader>wn` | Find trailing white space |
 | `<leader>tn` | Find tab |
 
