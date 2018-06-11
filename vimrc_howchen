@@ -1,3 +1,11 @@
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" file name:    vimrc_howchen
+" author:       chenhow1985<at>gmail<dot>com
+"
+" description:  use github to sync vim config
+"               details please refer:
+"               https://github.com/howhow/vimrc
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -32,13 +40,6 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
-" use LeaderF instead nerdtree and tagbar
-"Plugin 'scrooloose/nerdtree'
-"Plugin 'majutsushi/tagbar'
-
-" Commenter
-"Plugin 'scrooloose/nerdcommenter'
-
 " UML
 "Plugin 'scrooloose/vim-slumlord'
 "Plugin 'aklt/plantuml-syntax'
@@ -50,28 +51,23 @@ Plugin 'morhetz/gruvbox'
 Plugin 'dracula/vim'
 
 " use ALE to instead of syntastic
-"Plugin 'scrooloose/syntastic'
 Plugin 'w0rp/ale'
-
-" plug-in for color_code
-"Plugin 'jeaye/color_coded'
 
 " Plug-in for tmux
 "Plugin 'tmux-plugins/vim-tmux'
 
-" cscope
-Plugin 'steffanc/cscopemaps.vim'
+" gtags
+Plugin 'ludovicchabant/vim-gutentags'
+Plugin 'skywind3000/gutentags_plus'
 
 " scratch
-"Plugin 'mtth/scratch.vim'
+Plugin 'mtth/scratch.vim'
 
 " Latex
 "Plugin 'lervag/vimtex'
 
-" use fzf as file search, easy and fast then ctrlp and command-t
+" use fzf as file search, easy and fast than ctrlp and command-t
 " CtrlP, command-t and leaderF for backup, not load now
-" Plugin 'ctrlpvim/ctrlp.vim'
-" Plugin 'wincent/command-t'
 Plugin 'Yggdroot/LeaderF'
 
 " ACK
@@ -94,8 +90,6 @@ call vundle#end()            " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
-
-"execute pathogen#infect()
 
 
 " filetype & syntax
@@ -171,80 +165,6 @@ else
 endif
 "}
 
-" ctags {
-set tags=./tags,tags;
-
-" plugin config
-" cscope
-if has("cscope")
-
-    """"""""""""" Standard cscope/vim boilerplate
-
-    " use both cscope and ctag for 'ctrl-]', ':ta', and 'vim -t'
-    set cscopetag
-
-    " check cscope for definition of a symbol before checking ctags: set to 1
-    " if you want the reverse search order.
-    set csto=0
-    set cst
-    set csverb
-
-    " add any cscope database in current directory
-    "    if filereadable("cscope.out")
-    "        cs add cscope.out
-    " else add the database pointed to by environment variable
-    "    elseif $CSCOPE_DB != ""
-    "        cs add $CSCOPE_DB
-    "    endif
-
-    " show msg when any other cscope db added
-    set cscopeverbose
-
-    " set quickfix
-    set cscopequickfix=s-,g-,c-,d-,i-,t-,e-
-endif
-"}
-
-" Update tags file {
-function! TagsUpdate()
-    if !filereadable("cscope.file")&&!len(tagfiles())
-        exe "!find" . " `pwd`" . " -type f" . " -name" . " \"*.[c|h]*\"" . " > "
-                    \. "cscope.files"
-        exe "!find" . " `pwd`" . " -type f" . " -name" . " \"*.asm*\"" . " > "
-                    \. "cscope.files"
-        exe "!find" . " `pwd`" . " -type f" . " -name" . " \"*.mk*\"" . " >> "
-                    \. "cscope.files"
-        exe "!find" . " `pwd`" . " -type f" . " -name" . " \"*.config*\"" . " >> "
-                    \. "cscope.files"
-        exe "!find" . " `pwd`" . " -type f" . " -name" . " \"*.in*\"" . " >> "
-                    \. "cscope.files"
-    endif
-
-"    let g:SrcExpl_updateTagsCmd="cscope -bkq"
-"    let g:SrcExpl_updateTagsCmd="ctags --sort=foldcase -L cscope.files"
-"    call g:SrcExpl_UpdateTags()
-   exe "!cscope -bkq"
-   exe "!ctags --sort=foldcase -L cscope.files"
-endfunction
-"}
-
-" Update cscope and ctags {
-function! CscopeTagUpdate()
-    exe "!find" . " `pwd`" . " -type f" . " -name" . " \"*.[c|h]*\"" . " > "
-                \. "cscope.files"
-    exe "!find" . " `pwd`" . " -type f" . " -name" . " \"*.asm*\"" . " > "
-                \. "cscope.files"
-    exe "!find" . " `pwd`" . " -type f" . " -name" . " \"*.s*\"" . " > "
-                \. "cscope.files"
-    exe "!find" . " `pwd`" . " -type f" . " -name" . " \"*.mk*\"" . " >> "
-                \. "cscope.files"
-    exe "!find" . " `pwd`" . " -type f" . " -name" . " \"*.config*\"" . " >> "
-                \. "cscope.files"
-    exe "!find" . " `pwd`" . " -type f" . " -name" . " \"*.in*\"" . " >> "
-                \. "cscope.files"
-endfunction
-"}
-
 " EOL whitespace
 function! <SID>StripTrailingWhitespace()
     " Preparation: save last search, and cursor position.
@@ -258,10 +178,29 @@ function! <SID>StripTrailingWhitespace()
     call cursor(l, c)
 endfunction
 
+" ctags {
+    set tags=./tags,tags;
+"}
+
+" plugin config
+" gutentags {
+    " enable gtags module
+    let g:gutentags_modules = ['ctags', 'gtags_cscope']
+
+    " config project root markers.
+    let g:gutentags_project_root = ['.root', '.git']
+
+    " generate datebases in my cache directory, prevent gtags files polluting my project
+    let g:gutentags_cache_dir = expand('~/.cache/tags')
+
+    " forbid gutentags adding gtags databases
+    let g:gutentags_auto_add_gtags_cscope = 0
+"}
+
+" status line config
 if has("gui_running")
 " Powerline {
 	let g:Powerline_symbols = 'fancy'
-"	let g:Powerline_symbols = 'unicode'
 	let g:Powerline_colorscheme = 'skwp'
 "}
 else
@@ -279,25 +218,7 @@ endif
     let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 "}
 
-" Syntastic {
-"    let g:syntastic_c_checkers=['cppcheck']
-"    let g:syntastic_c_checkers=['splint']
-"    let g:syntastic_always_populate_loc_list = 1
-"    let g:syntastic_check_on_open=1
-"    let g:syntastic_enable_signs=1
-"if has("gui_running")
-"    let g:syntastic_error_symbol = '✗'
-"    let g:syntastic_warning_symbol = '⚠'
-"else
-"    let g:syntastic_error_symbol = 'x'
-"    let g:syntastic_warning_symbol = '!'
-"endif
-"    set statusline+=%#warningmsg#
-"    set statusline+=%{SyntasticStatuslineFlag()}
-"    set statusline+=%*gbar
-"}
-
-" ALE "
+" ALE {
     let g:ale_linters = {
     \   'c':['cppcheck', 'gcc'],
     \   'bash':['shellcheck'],
@@ -313,54 +234,10 @@ endif
     "let g:ale_set_quickfix = 1
 "}
 
-" Tagbar {
-"    let g:tagbar_left = 1
-"    let g:tagbar_width = 60
-"}
-
-" NERDTree {
-"    let NERDTreeQuitOnOpen=1
-"    let NERDTreeShowFiles=1
-"    let NERDTreeShowHidden=1
-"    let NERDTreeStatusLine=1
-"    let NERDTreeWinPos='Right'
-"    let NERDTreeDirArrows=1
-"if has("gui_running")
-"    let g:NERDTreeDirArrowExpandable = '▸'
-"    let g:NERDTreeDirArrowCollapsible = '▾'
-"else
-"    let g:NERDTreeDirArrowExpandable = '>'
-"    let g:NERDTreeDirArrowCollapsible = '|'
-"endif
-"}
-
-" CtrlP {
-"    set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.lib,*.a
-"    let g:ctrlp_working_path_mode = 'ar'
-"    let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:10'
-"
-"    " The Silver Searcher
-"    if executable('ag')
-"      " Use ag over grep
-"      set grepprg=ag\ --nogroup\ --nocolor
-"
-"      " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-"      let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-"
-"      " ag is fast enough that CtrlP doesn't need to cache
-"      let g:ctrlp_use_caching = 0
-"    endif
-"}
-
 " Ack and Ag {
     if executable('ag')
         let g:ackprg = 'ag --nogroup --nocolor --column'
     endif
-"}
-
-" VIM-bookmark {
-"    highlight BookmarkLine guibg=Green ctermfg=NONE
-"   let g:bookmark_highlight_lines=1
 "}
 
 " Easymotion {
@@ -373,24 +250,8 @@ endif
     map <Leader><leader>. <Plug>(easymotion-repeat)
 "}
 
-" SrcExp {
-" // Enable/Disable the local definition searching, and note that this is not
-" // guaranteed to work, the Source Explorer doesn't check the syntax for now.
-" // It only searches for a match with the keyword according to command 'gd'
-"    let g:SrcExpl_searchLocalDef=1
-
-" // Do not let the Source Explorer update the tags file when opening
-"    let g:SrcExpl_isUpdateTags=0
-
-
-" // Set the height of Source Explorer window
-"    let g:SrcExpl_winHeight = 20
-
-" // Set 100 ms for refreshing the Source Explorer
-"    let g:SrcExpl_refreshTime = 100
-"}
-
 " key mapping {
+    " current map leadr is \
     noremap <leader>r :new $MYVIMRC<CR>
     noremap <silent> <leader>R :source $MYVIMRC<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
@@ -415,9 +276,6 @@ endif
     inoremap hj <Esc>
     inoremap jh <Esc>
 
-"    nmap <leader>1 :TagbarToggle<cr>
-"    nmap <leader>2 :NERDTreeToggle<cr>
-"    nmap <F4> :SrcExplToggle<cr>
     nmap <C-h> :noh<cr>
     nmap <leader>7 :bn<cr>
     nmap <leader>8 :bp<cr>
@@ -425,14 +283,11 @@ endif
     " abt quickfix
     " :cw		open matched window
     " :cclose	close matched window
-    " current map leadr is \
     nmap <leader>5 :cw<cr>
     nmap <leader>6 :cclose<cr>
     nmap <leader>3 :cp<cr>
     nmap <leader>4 :cn<cr>
 
-"    nmap <F12> :call TagsUpdate()<cr>
-    nmap <F12> :call CscopeTagUpdate()<cr>
     nmap <silent> <Leader><space> :call <SID>StripTrailingWhitespace()<CR>
     nmap <leader>wn :match Error /\s\+$/<CR>
     nmap <leader>tn :match Error /\t/<CR>
