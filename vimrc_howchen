@@ -195,6 +195,9 @@ endfunction
 
     " forbid gutentags adding gtags databases
     let g:gutentags_auto_add_gtags_cscope = 0
+
+    " switch to quickfix window automaticlly
+    g:gutentags_plus_switch=1
 "}
 
 " status line config
@@ -264,10 +267,10 @@ endif
     " Ack,  don't jump to first result automatically
     nnoremap <leader>a :Ack!<Space><C-R>=expand("<cword>")<CR><CR>
 
-    inoremap <A-h> <C-o>h
-    inoremap <A-j> <C-o>j
-    inoremap <A-k> <C-o>k
-    inoremap <A-l> <C-o>l
+"    inoremap <A-h> <C-o>h
+"    inoremap <A-j> <C-o>j
+"    inoremap <A-k> <C-o>k
+"    inoremap <A-l> <C-o>l
 "    imap jj <Esc>
 "    imap hj <Esc>
 "    imap jh <Esc>
@@ -283,10 +286,10 @@ endif
     " abt quickfix
     " :cw		open matched window
     " :cclose	close matched window
-    nmap <leader>5 :cw<cr>
-    nmap <leader>6 :cclose<cr>
-    nmap <leader>3 :cp<cr>
-    nmap <leader>4 :cn<cr>
+    nmap <leader>3 :cw<cr>
+    nmap <leader>4 :cclose<cr>
+    nmap <leader>5 :cp<cr>
+    nmap <leader>6 :cn<cr>
 
     nmap <silent> <Leader><space> :call <SID>StripTrailingWhitespace()<CR>
     nmap <leader>wn :match Error /\s\+$/<CR>
