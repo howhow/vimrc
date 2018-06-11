@@ -39,15 +39,6 @@ fi
 sudo ln -s ~/.fzf/bin/fzf /usr/local/bin/fzf
 
 echo ""
-echo "Build YCM..."
-if [ -f ~/.vim/bundle/YouCompleteMe/third_party/ycmd/ycm_core.so ]; then
-    echo "YCM installed"
-else
-    echo "YCM has not been compiled, need compile..."
-    cd ~/.vim/bundle/YouCompleteMe && install.py --clang-completer && cd -
-fi
-
-echo ""
 echo "Preparing..."
 c_path=$(pwd)
 if [ -f ~/.vimrc ];  then
@@ -59,6 +50,15 @@ ln -s "$c_path"/vimrc_howchen "$HOME"/.vimrc
 echo ""
 echo "Env setup done, install VIM plugin..."
 vim +PluginInstall +qall
+
+echo ""
+echo "Plugin install doen, build YCM..."
+if [ -f ~/.vim/bundle/YouCompleteMe/third_party/ycmd/ycm_core.so ]; then
+    echo "YCM installed"
+else
+    echo "YCM has not been compiled, need compile..."
+    cd ~/.vim/bundle/YouCompleteMe && install.py --clang-completer && cd -
+fi
 
 echo ""
 echo "Enjoy..."
