@@ -53,10 +53,10 @@ issues with `cmake`. Therefore, install the following instead:
 | `<leader>F` | Open current file function list |
 | `<leader>a` | Grep current word under cursor |
 | `jj`/`hh`/`hj`/`jh` | Exit insert mode |
-| `<leader>3` | Open qucikfix window |
-| `<leader>4` | Close qucikfix window |
-| `<leader>5` | Next qucikfix item |
-| `<leader>6` | Previous qucikfix item |
+| `<leader>3` | Open quickfix window |
+| `<leader>4` | Close quickfix window |
+| `<leader>5` | Next quickfix item |
+| `<leader>6` | Previous quickfix item |
 | `<leader>7` | Next file buffer |
 | `<leader>8` | Previous file buffer |
 | `<leader>cs` | Find symbol (reference) under cursor |
