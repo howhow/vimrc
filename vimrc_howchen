@@ -280,8 +280,8 @@ endif
     inoremap jh <Esc>
 
     nmap <C-h> :noh<cr>
-    nmap <leader>7 :bn<cr>
-    nmap <leader>8 :bp<cr>
+    nmap <leader>7 :bp<cr>
+    nmap <leader>8 :bn<cr>
 
     " abt quickfix
     " :cw		open matched window
