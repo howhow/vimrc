@@ -55,10 +55,10 @@ issues with `cmake`. Therefore, install the following instead:
 | `jj`/`hh`/`hj`/`jh` | Exit insert mode |
 | `<leader>3` | Open quickfix window |
 | `<leader>4` | Close quickfix window |
-| `<leader>5` | Next quickfix item |
-| `<leader>6` | Previous quickfix item |
-| `<leader>7` | Next file buffer |
-| `<leader>8` | Previous file buffer |
+| `<leader>5` | Previous quickfix item |
+| `<leader>6` | Next quickfix item |
+| `<leader>7` | Previous file buffer |
+| `<leader>8` | Next file buffer |
 | `<leader>cs` | Find symbol (reference) under cursor |
 | `<leader>cg` | Find symbol definition under cursor |
 | `<leader>cd` | Functions called by this function |
