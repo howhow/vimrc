@@ -1,5 +1,6 @@
 # Use github to sync vi config
-*Tested on Ubuntu14.04 and 16.04
+- Tested on Ubuntu14.04 and 16.04
+- **Only for C and Assembly language development**
 
 ## How to use
 [git](https://git-scm.com/), [vim](https://github.com/vim/vim) and [gtags](https://www.gnu.org/software/global/global.html)* must be installed
@@ -74,5 +75,6 @@ issues with `cmake`. Therefore, install the following instead:
 
 ## TODO
 - [x] Compile and install YCM in install.sh
-- [ ] Migrate all plugins to async in order to fast vi speed
+- [x] Migrate all plugins to async in order to fast vi speed
+- [ ] Support python project
 - [ ] More error handling in install.sh
