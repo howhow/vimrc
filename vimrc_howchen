@@ -129,8 +129,8 @@ endif
 " self config {
     set nocompatible
     set scrolloff=4 " 4 lines above/below cursor when scrolling
-    set ignorecase  " case insensitive
-    set smartcase   " but become case sensitive if typr uppercase
+    "set ignorecase  " case insensitive
+    "set smartcase   " but become case sensitive if typr uppercase
     set number      " show line number
     set ruler       " show cursor position in status bar
     set title       " show file in titlebar
