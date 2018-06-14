@@ -19,11 +19,11 @@ issues with `cmake`. Therefore, install the following instead:
 - [git installation guide](https://gist.github.com/derhuerst/1b15ff4652a867391f03)
 - [gtags installtion guide](https://www.gnu.org/software/global/download.html)
 ```
-  download latest gtags from: <https://www.gnu.org/software/global/download.html> and unzip it
-  cd <unzipped_path>
-  ./configure
-  make
-  make install
+download latest gtags from: <https://www.gnu.org/software/global/download.html> and unzip it
+cd <unzipped_path>
+./configure
+make
+make install
 ```
 - [vim installation guide](https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source)
   - vim version must higer than 8.0
