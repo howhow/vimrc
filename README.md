@@ -49,29 +49,29 @@ issues with `cmake`. Therefore, install the following instead:
 
 | keymap | desc |
 |--------|------|
-| `\` | leader |
-| `<leader>f` | Open file list |
-| `<leader>F` | Open current file function list |
-| `<leader>a` | Grep current word under cursor |
-| `jj`/`hh`/`hj`/`jh` | Exit insert mode |
-| `<leader>3` | Open quickfix window |
-| `<leader>4` | Close quickfix window |
-| `<leader>5` | Previous quickfix item |
-| `<leader>6` | Next quickfix item |
-| `<leader>7` | Previous file buffer |
-| `<leader>8` | Next file buffer |
-| `<leader>cs` | Find symbol (reference) under cursor |
-| `<leader>cg` | Find symbol definition under cursor |
-| `<leader>cd` | Functions called by this function |
-| `<leader>cc` | Functions calling this function |
-| `<leader>ct` | Find text string under cursor |
-| `<leader>ce` | Find egrep pattern under cursor |
-| `<leader>cf` | Find file name under cursor |
-| `<leader>ci` | Find files #including the file name under cursor |
-| `<leader>ca` | Find places where current symbol is assigned |
-| `<leader><space>` | Strip trailing white space |
-| `<leader>wn` | Find trailing white space |
-| `<leader>tn` | Find tab |
+| <kbd>\\</kbd> | leader |
+| `<leader>` + <kbd>f</kbd> | Open file list |
+| `<leader>` + <kbd>F</kbd> | Open current file function list |
+| `<leader>` + <kbd>a</kbd> | Grep current word under cursor |
+| <kbd>j</kbd><kbd>j</kbd>/<kbd>h</kbd><kbd>h</kbd>/<kbd>h</kbd><kbd>j</kbd>/<kbd>j</kbd><kbd>h</kbd> | Exit insert mode |
+| `<leader>` + <kbd>3</kbd> | Open quickfix window |
+| `<leader>` + <kbd>4</kbd> | Close quickfix window |
+| `<leader>` + <kbd>5</kbd> | Previous quickfix item |
+| `<leader>` + <kbd>6</kbd> | Next quickfix item |
+| `<leader>` + <kbd>7</kbd> | Previous file buffer |
+| `<leader>` + <kbd>8</kbd> | Next file buffer |
+| `<leader>` + <kbd>c</kbd><kbd>s</kbd> | Find symbol (reference) under cursor |
+| `<leader>` + <kbd>c</kbd><kbd>g</kbd> | Find symbol definition under cursor |
+| `<leader>` + <kbd>c</kbd><kbd>d</kbd> | Functions called by this function |
+| `<leader>` + <kbd>c</kbd><kbd>c</kbd> | Functions calling this function |
+| `<leader>` + <kbd>c</kbd><kbd>t</kbd> | Find text string under cursor |
+| `<leader>` + <kbd>c</kbd><kbd>e</kbd> | Find egrep pattern under cursor |
+| `<leader>` + <kbd>c</kbd><kbd>f</kbd> | Find file name under cursor |
+| `<leader>` + <kbd>c</kbd><kbd>i</kbd> | Find files #including the file name under cursor |
+| `<leader>` + <kbd>c</kbd><kbd>a</kbd> | Find places where current symbol is assigned |
+| `<leader>` + <kbd>space</kbd> | Strip trailing white space |
+| `<leader>` + <kbd>w</kbd><kbd>n</kbd> | Find trailing white space |
+| `<leader>` + <kbd>t</kbd><kbd>n</kbd> | Find tab |
 
 ## TODO
 - [x] Compile and install YCM in install.sh
