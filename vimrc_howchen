@@ -67,8 +67,12 @@ Plugin 'skywind3000/gutentags_plus'
 "Plugin 'lervag/vimtex'
 
 " use fzf as file search, easy and fast than ctrlp and command-t
-" CtrlP, command-t and leaderF for backup, not load now
+" LeaderF can be use as function browser
 Plugin 'Yggdroot/LeaderF'
+
+" fzf will be cloned and install via git and shell, so not use plugin manager
+"Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 
 " ACK
 Plugin 'mileszs/ack.vim'
@@ -237,6 +241,11 @@ endif
     "let g:ale_set_quickfix = 1
 "}
 
+" FZF {
+    "let g:fzf_layout = { 'window': 'enew' }
+    "let g:fzf_layout = { 'window': '-tabnew' }
+    "let g:fzf_layout = { 'window': '10split enew' }
+"}
 " Ack and Ag {
     if executable('ag')
         let g:ackprg = 'ag --nogroup --nocolor --column'
