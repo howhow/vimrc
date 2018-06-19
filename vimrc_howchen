@@ -5,6 +5,8 @@
 " description:  use github to sync vim config
 "               details please refer:
 "               https://github.com/howhow/vimrc
+"
+" license:      MIT
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -205,20 +207,9 @@ endfunction
 "}
 
 " status line config
-if has("gui_running")
-" Powerline {
-	let g:Powerline_symbols = 'fancy'
-	let g:Powerline_colorscheme = 'skwp'
-"}
-else
 " Air-line {
-"    let g:airline_theme='base16'
-"    let g:airline_theme='luna'
-"    let g:airline_theme='solarized'
-"    let g:airline_solarized_bg='dark'
     let g:airline#extensions#tabline#enabled = 1
 "}
-endif
 
 " YCM {
 "	let g:ycm_extra_conf_globlist = ['~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/*','!~/*']
@@ -246,7 +237,9 @@ endif
     "let g:fzf_layout = { 'window': '-tabnew' }
     "let g:fzf_layout = { 'window': '10split enew' }
 "}
+
 " Ack and Ag {
+    " use ag as the search engine
     if executable('ag')
         let g:ackprg = 'ag --nogroup --nocolor --column'
     endif
@@ -276,13 +269,11 @@ endif
     " Ack,  don't jump to first result automatically
     nnoremap <leader>a :Ack!<Space><C-R>=expand("<cword>")<CR><CR>
 
-"    inoremap <A-h> <C-o>h
-"    inoremap <A-j> <C-o>j
-"    inoremap <A-k> <C-o>k
-"    inoremap <A-l> <C-o>l
-"    imap jj <Esc>
-"    imap hj <Esc>
-"    imap jh <Esc>
+    "inoremap <A-h> <C-o>h
+    "inoremap <A-j> <C-o>j
+    "inoremap <A-k> <C-o>k
+    "inoremap <A-l> <C-o>l
+    " use jj/hh/hj/jh to switch back to normal mode  
     inoremap jj <Esc>
     inoremap hh <Esc>
     inoremap hj <Esc>
