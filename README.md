@@ -78,3 +78,6 @@ make install
 - [x] Migrate all plugins to async in order to fast vi speed
 - [ ] Support python project
 - [ ] More error handling in install.sh
+
+## LICENSE
+**MIT**
