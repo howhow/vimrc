@@ -57,7 +57,7 @@ if [ -f ~/.vim/bundle/YouCompleteMe/third_party/ycmd/ycm_core.so ]; then
     echo "YCM installed"
 else
     echo "YCM has not been compiled, need compile..."
-    cd ~/.vim/bundle/YouCompleteMe && install.py --clang-completer && cd -
+    cd ~/.vim/bundle/YouCompleteMe && ./install.py --clang-completer && cd -
 fi
 
 echo ""
