@@ -35,7 +35,7 @@ make install
   ```bash
   make VIMRUNTIMEDIR=/usr/local/share/vim/vim81
   ```
- **NOTE**: `ctage` will be redirected to `Exuberant Ctags`, which without maintiance long time ago, recommand to install [Universal Ctags](https://github.com/universal-ctags/ctags) to instead
+ **NOTE**: `ctags` will be redirected to `Exuberant Ctags`, which without maintiance long time ago, recommand to install [Universal Ctags](https://github.com/universal-ctags/ctags) to instead
 
 ## Integrated plugins
 1. plugin manager: [Vundle](https://github.com/VundleVim/Vundle.vim)
