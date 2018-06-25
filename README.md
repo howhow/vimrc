@@ -10,7 +10,7 @@ cd ~/.my_config/vim
 ./install.sh cmake ctags cscope python2.7 silversearcher-ag
 ```
 **NOTE**: On older systems (e.g. Ubuntu 14.04) you may run into compilation
-issues with `cmake`. Therefore, install the following instead:
+issues with `cmake`. Therefore, install the `cmake3` instead:
 ```
 ./install.sh cmake3 ctags cscope python2.7 silversearcher-ag
 ```
@@ -27,6 +27,15 @@ make install
 ```
 - [vim installation guide](https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source)
   - vim version must higer than 8.0
+  - Please pay attention to vim version and change corresponding `VIMRUNTIMEDIR` during make, eg,
+  ```bash
+  make VIMRUNTIMEDIR=/usr/local/share/vim/vim80
+  ```
+  right now vim version already upgrade to v8.1, therefore:
+  ```bash
+  make VIMRUNTIMEDIR=/usr/local/share/vim/vim81
+  ```
+ **NOTE**: `ctage` will be redirected to `Exuberant Ctags`, which without maintiance long time ago, recommand to install [Universal Ctags](https://github.com/universal-ctags/ctags) to instead
 
 ## Integrated plugins
 1. plugin manager: [Vundle](https://github.com/VundleVim/Vundle.vim)
