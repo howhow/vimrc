@@ -45,7 +45,7 @@ if [ -f ~/.vimrc ];  then
     echo "Backup current .vimrc..."
     mv "$HOME"/.vimrc "$HOME"/.vimrc_bak
 fi
-ln -s "$c_path"/vimrc_howchen "$HOME"/.vimrc
+ln -s "$c_path"/vimrc "$HOME"/.vimrc
 
 echo ""
 echo "Env setup done, install VIM plugin..."
