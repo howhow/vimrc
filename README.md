@@ -7,12 +7,12 @@
 ```
 git clone https://github.com/howhow/vimrc ~/.my_config/vim
 cd ~/.my_config/vim
-./install.sh cmake ctags cscope python2.7 silversearcher-ag
+./install.sh build-essential cmake ctags cscope python2.7 silversearcher-ag
 ```
 **NOTE**: On older systems (e.g. Ubuntu 14.04) you may run into compilation
 issues with `cmake`. Therefore, install the `cmake3` instead:
 ```
-./install.sh cmake3 ctags cscope python2.7 silversearcher-ag
+./install.sh build-essential cmake3 ctags cscope python2.7 silversearcher-ag
 ```
 
 - you could clone to anywhere, but I like to save all my configs into one place
