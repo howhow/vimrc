@@ -112,29 +112,33 @@ endif
 " solarized
 " gruvbox
 " dracula
-if has("gui_running")
+
+" check if remote connection
+if($SSH_CLIENT || $SSH_TTY)
+    "set t_Co=256
+    "syntax on
+    "colorscheme gruvbox
+    set background=dark
+else
     syntax on
+    set t_Co=256
     set background=dark
     colorscheme gruvbox
-    hi cursorline guibg=#5f0000
-    set guifont=DejaVu\ Sans\ Mono\ 10
-    set lines=32
-    set columns=128
-    set mousemodel=popup
-    set guioptions+=b
-    set guioptions-=m
-    set guioptions-=T
-else
-    "set term=xterm-256color
-    "set t_Co=256
-    "colorscheme gruvbox
-    "colorscheme bw
-    set background=dark
+    if has("gui_running")
+        hi cursorline guibg=#5f0000
+        set guifont=DejaVu\ Sans\ Mono\ 10
+        set lines=32
+        set columns=128
+        set mousemodel=popup
+        set guioptions+=b
+        set guioptions-=m
+        set guioptions-=T
+    endif
 endif
 
 " self config {
     set nocompatible
-    set scrolloff=4 " 4 lines above/below cursor when scrolling
+    set scrolloff=4  " 4 lines above/below cursor when scrolling
     "set ignorecase  " case insensitive
     "set smartcase   " but become case sensitive if typr uppercase
     set number      " show line number
@@ -295,3 +299,4 @@ endfunction
     nmap <leader>wn :match Error /\s\+$/<CR>
     nmap <leader>tn :match Error /\t/<CR>
 "}
+
