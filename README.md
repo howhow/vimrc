@@ -18,12 +18,8 @@ issues with `cmake`. Therefore, install the `cmake3` instead:_**
 - you could clone to anywhere, but I like to save all my configs into one place
 - [git installation guide](https://gist.github.com/derhuerst/1b15ff4652a867391f03)
 - [gtags installtion guide](https://www.gnu.org/software/global/download.html)
-```
-download latest gtags from: <https://www.gnu.org/software/global/download.html> and unzip it
-cd <unzipped_path>
-./configure
-make
-make install
+```bash
+wget http://tamacom.com/global/global-6.6.2.tar.gz && tar -xvzf global-6.6.2.tar.gz && cd ./global-6.6.2 && ./configure && make && sudo make install
 ```
 - [vim installation guide](https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source)
   - vim version must higer than 8.0
