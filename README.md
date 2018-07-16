@@ -9,8 +9,8 @@ git clone https://github.com/howhow/vimrc ~/.my_config/vim
 cd ~/.my_config/vim
 ./install.sh build-essential cmake ctags cscope python2.7 silversearcher-ag
 ```
-**NOTE**: On older systems (e.g. Ubuntu 14.04) you may run into compilation
-issues with `cmake`. Therefore, install the `cmake3` instead:
+**_NOTE: For older systems (e.g. Ubuntu 14.04) you may run into compilation
+issues with `cmake`. Therefore, install the `cmake3` instead:_**
 ```
 ./install.sh build-essential cmake3 ctags cscope python2.7 silversearcher-ag
 ```
