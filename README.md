@@ -19,7 +19,13 @@ issues with `cmake`. Therefore, install the `cmake3` instead:_**
 - [git installation guide](https://gist.github.com/derhuerst/1b15ff4652a867391f03)
 - [gtags installtion guide](https://www.gnu.org/software/global/download.html)
 ```bash
-wget http://tamacom.com/global/global-6.6.2.tar.gz && tar -xvzf global-6.6.2.tar.gz && cd ./global-6.6.2 && ./configure && make && sudo make install
+wget http://tamacom.com/global/global-6.6.2.tar.gz && \
+tar -xvzf global-6.6.2.tar.gz && \
+cd ./global-6.6.2 && \
+./configure && \
+make && \
+sudo make install && \
+cd -
 ```
 - [vim installation guide](https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source)
   - vim version must higer than 8.0
