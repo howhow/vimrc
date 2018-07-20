@@ -49,7 +49,7 @@ Plugin 'vim-airline/vim-airline-themes'
 " color
 "Plugin 'flazz/vim-colorschemes'
 "Plugin 'altercation/vim-colors-solarized'
-"Plugin 'dracula/vim'   "dracula
+"Plugin 'dracula/vim'
 Plugin 'morhetz/gruvbox'
 
 " use ALE to instead of syntastic
@@ -82,6 +82,10 @@ Plugin 'mileszs/ack.vim'
 " Easy motion
 Plugin 'easymotion/vim-easymotion'
 
+" snippets
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 "filetype plugin indent on    " required
@@ -101,8 +105,8 @@ call vundle#end()            " required
 " filetype & syntax
 filetype plugin on
 filetype indent on
-au BufRead,BufNewFile *.s	let asmsyntax='gas'|let filetype_inc='gas'
-au BufRead,BufNewFile *.asm	let asmsyntax='armasm'|let filetype_inc='armasm'
+au BufRead,BufNewFile *.s let asmsyntax='gas'|let filetype_inc='gas'
+au BufRead,BufNewFile *.asm let asmsyntax='armasm'|let filetype_inc='armasm'
 
 if has("unix") && strlen($MYVIMRC) < 1
   let $MYVIMRC=$HOME . '/.vimrc'
@@ -116,9 +120,19 @@ endif
 " check if remote connection
 if($SSH_CLIENT || $SSH_TTY)
     "set t_Co=256
-    "syntax on
-    "colorscheme gruvbox
     set background=dark
+    if has("gui_running")
+        syntax on
+        colorscheme gruvbox
+        hi cursorline guibg=#5f0000
+        set guifont=DejaVu\ Sans\ Mono\ 10
+        set lines=32
+        set columns=128
+        set mousemodel=popup
+        set guioptions+=b
+        set guioptions-=m
+        set guioptions-=T
+    endif
 else
     syntax on
     set t_Co=256
@@ -216,7 +230,7 @@ endfunction
 "}
 
 " YCM {
-"	let g:ycm_extra_conf_globlist = ['~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/*','!~/*']
+"   let g:ycm_extra_conf_globlist = ['~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/*','!~/*']
     let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 "}
 
@@ -259,6 +273,13 @@ endfunction
     map <Leader><leader>. <Plug>(easymotion-repeat)
 "}
 
+" ultisnips {
+    let g:UltiSnipsExpandTrigger="<c-e>"
+    let g:UltiSnipsJumpForwardTrigger="<c-b>"
+    let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+    let g:UltiSnipsEditSplit="horizontal"
+"}
+
 " key mapping {
     " current map leadr is \
     noremap <leader>r :new $MYVIMRC<CR>
@@ -277,7 +298,7 @@ endfunction
     "inoremap <A-j> <C-o>j
     "inoremap <A-k> <C-o>k
     "inoremap <A-l> <C-o>l
-    " use jj/hh/hj/jh to switch back to normal mode  
+    " use jj/hh/hj/jh to switch back to normal mode
     inoremap jj <Esc>
     inoremap hh <Esc>
     inoremap hj <Esc>
@@ -288,8 +309,8 @@ endfunction
     nmap <leader>8 :bn<cr>
 
     " abt quickfix
-    " :cw		open matched window
-    " :cclose	close matched window
+    " :cw       open matched window
+    " :cclose   close matched window
     nmap <leader>3 :cw<cr>
     nmap <leader>4 :cclose<cr>
     nmap <leader>5 :cp<cr>
