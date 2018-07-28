@@ -24,10 +24,10 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
+" plugin group for git
 Plugin 'tpope/vim-fugitive'
+Plugin 'junegunn/gv.vim'
+Plugin 'airblade/vim-gitgutter'
 
 " plug-in for YCM
 Plugin 'Valloric/YouCompleteMe'
@@ -108,6 +108,12 @@ filetype indent on
 au BufRead,BufNewFile *.s let asmsyntax='gas'|let filetype_inc='gas'
 au BufRead,BufNewFile *.asm let asmsyntax='armasm'|let filetype_inc='armasm'
 
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
+
 if has("unix") && strlen($MYVIMRC) < 1
   let $MYVIMRC=$HOME . '/.vimrc'
 endif
@@ -155,7 +161,8 @@ endif
     set scrolloff=4  " 4 lines above/below cursor when scrolling
     "set ignorecase  " case insensitive
     "set smartcase   " but become case sensitive if typr uppercase
-    set number      " show line number
+    "set number      " show line number
+    set number relativenumber
     set ruler       " show cursor position in status bar
     set title       " show file in titlebar
     set incsearch
@@ -188,6 +195,7 @@ else
     set clipboard+=unnamed
 endif
 "}
+
 
 " EOL whitespace
 function! <SID>StripTrailingWhitespace()
@@ -271,6 +279,21 @@ endfunction
     map <Leader><Leader>k <Plug>(easymotion-k)
     map <Leader><leader>l <Plug>(easymotion-lineforward)
     map <Leader><leader>. <Plug>(easymotion-repeat)
+
+    " <Leader>f{char} to move to {char}
+    map  <Leader>c <Plug>(easymotion-bd-f)
+    nmap <Leader>c <Plug>(easymotion-overwin-f)
+
+    " s{char}{char} to move to {char}{char}
+    nmap s <Plug>(easymotion-overwin-f2)
+
+    " Move to line
+    map <Leader>L <Plug>(easymotion-bd-jk)
+    nmap <Leader>L <Plug>(easymotion-overwin-line)
+
+    " Move to word
+    map  <Leader>w <Plug>(easymotion-bd-w)
+    nmap <Leader>w <Plug>(easymotion-overwin-w)
 "}
 
 " ultisnips {
@@ -281,7 +304,8 @@ endfunction
 "}
 
 " key mapping {
-    " current map leadr is \
+    " current map leadr change to space
+    let mapleader="\<Space>"
     noremap <leader>r :new $MYVIMRC<CR>
     noremap <silent> <leader>R :source $MYVIMRC<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
