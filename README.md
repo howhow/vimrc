@@ -48,7 +48,7 @@ cd -
 6. syntax checking: ~~[syntastic](https://github.com/vim-syntastic/syntastic)~~, [ale](https://github.com/w0rp/ale)
 7. searching: ~~[CrtlP](https://github.com/ctrlpvim/ctrlp.vim)~~,[LeaderF](https://github.com/Yggdroot/LeaderF), [fzf](https://github.com/junegunn/fzf), [ack](https://github.com/mileszs/ack.vim), [vim-easymotion](https://github.com/easymotion/vim-easymotion)
 8. document: [vimtex](https://github.com/lervag/vimtex), ~~[slumlord](https://github.com/scrooloose/vim-slumlord)~~
-9. code: ~~[tagbar](https://github.com/majutsushi/tagbar)~~, ~~[cscopemaps](https://github.com/steffanc/cscopemaps.vim)~~, [gutentags](https://github.com/ludovicchabant/vim-gutentags), [gutentags_plus](https://github.com/skywind3000/gutentags_plus)
+9. code: ~~[tagbar](https://github.com/majutsushi/tagbar)~~, ~~[nerdtree](https://github.com/scrooloose/nerdtree)~~, ~~[cscopemaps](https://github.com/steffanc/cscopemaps.vim)~~, [gutentags](https://github.com/ludovicchabant/vim-gutentags), [gutentags_plus](https://github.com/skywind3000/gutentags_plus)
 
 *YCM need compile after download, if fail to use `install.sh`, please refer to the [guide](https://github.com/Valloric/YouCompleteMe#installation)
 
