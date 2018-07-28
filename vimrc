@@ -340,7 +340,7 @@ endfunction
     nmap <leader>5 :cp<cr>
     nmap <leader>6 :cn<cr>
 
-    nmap <silent> <Leader><space> :call <SID>StripTrailingWhitespace()<CR>
+    nmap <silent> <Leader>e :call <SID>StripTrailingWhitespace()<CR>:exe ":echo 'Strip EOL whitespace'"<CR>
     nmap <leader>wn :match Error /\s\+$/<CR>
     nmap <leader>tn :match Error /\t/<CR>
 "}
