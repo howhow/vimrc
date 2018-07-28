@@ -41,7 +41,7 @@ cd -
 
 ## Integrated plugins
 1. plugin manager: [Vundle](https://github.com/VundleVim/Vundle.vim)
-2. git: [fugitive](https://github.com/tpope/vim-fugitive)
+2. git: [fugitive](https://github.com/tpope/vim-fugitive), [gitgutter](https://github.com/airblade/vim-gitgutter), [gv](https://github.com/junegunn/gv.vim)
 3. complete: [YouCompleteMe](https://github.com/Valloric/YouCompleteMe)*
 4. status line: [airline](https://github.com/vim-airline/vim-airline)
 5. color schemes: [gruvbox](https://github.com/morhetz/gruvbox), ~~[solarized](https://github.com/altercation/solarized)~~, ~~[dracula](https://draculatheme.com/vim/)~~
@@ -60,7 +60,7 @@ cd -
 
 | keymap | desc |
 |--------|------|
-| <kbd>\\</kbd> | leader |
+| <kbd>space</kbd> | leader |
 | `<leader>` + <kbd>f</kbd> | Open file list |
 | `<leader>` + <kbd>F</kbd> | Open current file function list |
 | `<leader>` + <kbd>a</kbd> | Grep current word under cursor |
@@ -80,7 +80,7 @@ cd -
 | `<leader>` + <kbd>c</kbd><kbd>f</kbd> | Find file name under cursor |
 | `<leader>` + <kbd>c</kbd><kbd>i</kbd> | Find files #including the file name under cursor |
 | `<leader>` + <kbd>c</kbd><kbd>a</kbd> | Find places where current symbol is assigned |
-| `<leader>` + <kbd>space</kbd> | Strip trailing white space |
+| `<leader>` + <kbd>e</kbd> | Strip trailing white space |
 | `<leader>` + <kbd>w</kbd><kbd>n</kbd> | Find trailing white space |
 | `<leader>` + <kbd>t</kbd><kbd>n</kbd> | Find tab |
 
