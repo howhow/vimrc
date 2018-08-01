@@ -105,13 +105,17 @@ call vundle#end()            " required
 " filetype & syntax
 filetype plugin on
 filetype indent on
-au BufRead,BufNewFile *.s let asmsyntax='gas'|let filetype_inc='gas'
-au BufRead,BufNewFile *.asm let asmsyntax='armasm'|let filetype_inc='armasm'
+
+augroup assemblytoggle
+    autocmd!
+    au BufRead,BufNewFile *.s let asmsyntax='gas'|let filetype_inc='gas'
+    au BufRead,BufNewFile *.asm let asmsyntax='armasm'|let filetype_inc='armasm'
+augroup END
 
 augroup numbertoggle
-  autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+    autocmd!
+    autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+    autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
 
 if has("unix") && strlen($MYVIMRC) < 1
@@ -239,7 +243,7 @@ endfunction
 
 " YCM {
 "   let g:ycm_extra_conf_globlist = ['~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/*','!~/*']
-    let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+    let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 "}
 
 " ALE {
@@ -341,7 +345,7 @@ endfunction
     nmap <leader>6 :cn<cr>
 
     nmap <silent> <Leader>e :call <SID>StripTrailingWhitespace()<CR>:exe ":echo 'Strip EOL whitespace'"<CR>
-    nmap <leader>wn :match Error /\s\+$/<CR>
-    nmap <leader>tn :match Error /\t/<CR>
+    nmap <leader>wn :match ErrorMsg /\s\+$/<CR>
+    nmap <leader>tn :match ErrorMsg /\t/<CR>
 "}
 
