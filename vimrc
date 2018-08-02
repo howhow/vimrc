@@ -126,7 +126,6 @@ endif
 " solarized
 " gruvbox
 " dracula
-
 " check if remote connection
 if($SSH_CLIENT || $SSH_TTY)
     "set t_Co=256
@@ -198,6 +197,7 @@ else
     " Vim now also uses the selection system clipboard for default yank/paste.
     set clipboard+=unnamed
 endif
+    set updatetime=100
 "}
 
 
