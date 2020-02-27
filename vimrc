@@ -14,111 +14,69 @@ filetype off                  " required
 " set the runtime path to include fzf
 set rtp+=~/.fzf
 
-" set the runtime path to include Vundle and initialize
-"set rtp+=~/.vim/bundle/Vundle.vim
-
-"call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
 call plug#begin('~/.vim/plugged')
 
-" let Vundle manage Vundle, required
-" Plugin 'VundleVim/Vundle.vim'
-
 " plugin group for git
-"Plugin 'tpope/vim-fugitive'
-"Plugin 'junegunn/gv.vim'
-"Plugin 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 Plug 'airblade/vim-gitgutter'
 
-" plug-in for YCM
-"Plugin 'Valloric/YouCompleteMe'
-
-" YCM-generator
-"Plugin 'rdnetto/YCM-Generator'
+" coc
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " super-tab
 "Plugin 'ervandew/supertab'
 
 " air-line
-"Plugin 'vim-airline/vim-airline'
-"Plugin 'vim-airline/vim-airline-themes'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " UML
-"Plugin 'scrooloose/vim-slumlord'
-"Plugin 'aklt/plantuml-syntax'
+"Plug 'scrooloose/vim-slumlord'
+"Plug 'aklt/plantuml-syntax'
 
 " color
-"Plugin 'flazz/vim-colorschemes'
-"Plugin 'altercation/vim-colors-solarized'
-"Plugin 'dracula/vim'
-"Plugin 'morhetz/gruvbox'
+"Plug 'flazz/vim-colorschemes'
+"Plug 'altercation/vim-colors-solarized'
+"Plug 'dracula/vim'
+"Plug 'morhetz/gruvbox'
 Plug 'morhetz/gruvbox'
 
 " use ALE to instead of syntastic
-"Plugin 'w0rp/ale'
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 
 " Plug-in for tmux
-"Plugin 'tmux-plugins/vim-tmux'
+"Plug 'tmux-plugins/vim-tmux'
 
 " gtags
-"Plugin 'ludovicchabant/vim-gutentags'
-"Plugin 'skywind3000/gutentags_plus'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'skywind3000/gutentags_plus'
 
 " scratch
-"Plugin 'mtth/scratch.vim'
+"Plug 'mtth/scratch.vim'
 
 " Latex
-"Plugin 'lervag/vimtex'
+"Plug 'lervag/vimtex'
 
 " use fzf as file search, easy and fast than ctrlp and command-t
 " LeaderF can be use as function browser
-"Plugin 'Yggdroot/LeaderF'
 Plug 'Yggdroot/LeaderF'
 
 " fzf will be cloned and install via git and shell, so not use plugin manager
-"Plugin 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
 " ACK
-"Plugin 'mileszs/ack.vim'
 Plug 'mileszs/ack.vim'
 
 " Easy motion
-"Plugin 'easymotion/vim-easymotion'
 Plug 'easymotion/vim-easymotion'
 
 " snippets
-"Plugin 'SirVer/ultisnips'
-"Plugin 'honza/vim-snippets'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
-" All of your Plugins must be added before the following line
-"call vundle#end()            " required
 " Initialize plugin system
 call plug#end()
-
-"filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
 
 
 " filetype & syntax
@@ -262,12 +220,16 @@ endfunction
 
 " YCM {
 "   let g:ycm_extra_conf_globlist = ['~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/*','!~/*']
-    let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
+"    let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
+"}
+
+" deoplete {
+    let g:deoplete#enable_at_startup = 1
 "}
 
 " ALE {
     let g:ale_linters = {
-    \   'c':['cppcheck', 'gcc'],
+    \   'c':['gcc', 'cppcheck'],
     \   'bash':['shellcheck'],
     \}
     let g:ale_echo_msg_format = '[%linter%][%severity%]%code: %%s'
