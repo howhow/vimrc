@@ -1,4 +1,15 @@
 #!/bin/sh
+#####################################################
+# File:     install.sh
+# Author:   howchen
+# Date:     20/Feb/2020
+# Usage:    ./install args
+#
+# Example:
+#   ./install cmake cscope silversearch-ag python3.7
+#####################################################
+
+curr_dat=$(date +"%S%M%H%d%m%Y")
 
 for prog in "$@"
 do
@@ -13,12 +24,25 @@ do
 done
 
 echo ""
-echo "Checking Vundle..."
-if [ -d ~/.vim/bundle/Vundle.vim ]; then
-    echo "Vundle installed"
+echo "Checking exist vim plugin"
+if [ -d $HOME/.vim ]; then
+    echo "Detected existing vim plugin..."
+    echo "Do you want to backup first? [y]/n: "
+    read -r option
+    if [ "$option" = "y" ] || [ "$option" = "Y" ]; then
+        mv "$HOME/.vim" "$HOME/.vim_bak_$curr_dat"
+        echo "Backup done!"
+    fi
+fi
+
+echo ""
+echo "Checking vim-plugin..."
+if [ -f ~/.vim/autoload/plug.vim ]; then
+    echo "vim-plugin is installed"
 else
-    echo "Vundle is not installed, clone from git..."
-    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    echo "vim-plugin is not installed, get it..."
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
 echo ""
@@ -33,32 +57,36 @@ fi
 echo ""
 echo "Add fzf to bin search PATH..."
 if [ -f /usr/local/bin/fzf ];  then
-    echo "Older version, remove first..."
+    echo "fzf has old version, remove first..."
     sudo rm /usr/local/bin/fzf
 fi
-sudo ln -s ~/.fzf/bin/fzf /usr/local/bin/fzf
+
+if [ ! -f /usr/local/bin/fzf ]; then
+    echo "Make symbol link to bin search PATH"
+    sudo ln -s ~/.fzf/bin/fzf /usr/local/bin/fzf
+fi
 
 echo ""
 echo "Preparing..."
 c_path=$(pwd)
 if [ -f ~/.vimrc ];  then
     echo "Backup current .vimrc..."
-    mv "$HOME"/.vimrc "$HOME"/.vimrc_bak
+    mv "$HOME/.vimrc" "$HOME/.vimrc_bak_$curr_dat"
 fi
 ln -s "$c_path"/vimrc "$HOME"/.vimrc
 
 echo ""
 echo "Env setup done, install VIM plugin..."
-vim +PluginInstall +qall
+vim +PlugInstall +qall
 
-echo ""
-echo "Plugin install doen, build YCM..."
-if [ -f ~/.vim/bundle/YouCompleteMe/third_party/ycmd/ycm_core.so ]; then
-    echo "YCM installed"
-else
-    echo "YCM has not been compiled, need compile..."
-    cd ~/.vim/bundle/YouCompleteMe && ./install.py --clang-completer && cd -
-fi
+#echo ""
+#echo "Plugin install doen, build YCM..."
+#if [ -f ~/.vim/bundle/YouCompleteMe/third_party/ycmd/ycm_core.so ]; then
+#    echo "YCM installed"
+#else
+#    echo "YCM has not been compiled, need compile..."
+#    cd ~/.vim/bundle/YouCompleteMe && ./install.py --clang-completer && cd -
+#fi
 
 echo ""
 echo "Enjoy..."
