@@ -11,26 +11,31 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-
 " set the runtime path to include fzf
 set rtp+=~/.fzf
 
-call vundle#begin()
+" set the runtime path to include Vundle and initialize
+"set rtp+=~/.vim/bundle/Vundle.vim
+
+"call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
+call plug#begin('~/.vim/plugged')
+
 " let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+" Plugin 'VundleVim/Vundle.vim'
 
 " plugin group for git
-Plugin 'tpope/vim-fugitive'
-Plugin 'junegunn/gv.vim'
-Plugin 'airblade/vim-gitgutter'
+"Plugin 'tpope/vim-fugitive'
+"Plugin 'junegunn/gv.vim'
+"Plugin 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+Plug 'junegunn/gv.vim'
+Plug 'airblade/vim-gitgutter'
 
 " plug-in for YCM
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 
 " YCM-generator
 "Plugin 'rdnetto/YCM-Generator'
@@ -39,8 +44,10 @@ Plugin 'Valloric/YouCompleteMe'
 "Plugin 'ervandew/supertab'
 
 " air-line
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+"Plugin 'vim-airline/vim-airline'
+"Plugin 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " UML
 "Plugin 'scrooloose/vim-slumlord'
@@ -50,17 +57,21 @@ Plugin 'vim-airline/vim-airline-themes'
 "Plugin 'flazz/vim-colorschemes'
 "Plugin 'altercation/vim-colors-solarized'
 "Plugin 'dracula/vim'
-Plugin 'morhetz/gruvbox'
+"Plugin 'morhetz/gruvbox'
+Plug 'morhetz/gruvbox'
 
 " use ALE to instead of syntastic
-Plugin 'w0rp/ale'
+"Plugin 'w0rp/ale'
+Plug 'w0rp/ale'
 
 " Plug-in for tmux
 "Plugin 'tmux-plugins/vim-tmux'
 
 " gtags
-Plugin 'ludovicchabant/vim-gutentags'
-Plugin 'skywind3000/gutentags_plus'
+"Plugin 'ludovicchabant/vim-gutentags'
+"Plugin 'skywind3000/gutentags_plus'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'skywind3000/gutentags_plus'
 
 " scratch
 "Plugin 'mtth/scratch.vim'
@@ -70,24 +81,32 @@ Plugin 'skywind3000/gutentags_plus'
 
 " use fzf as file search, easy and fast than ctrlp and command-t
 " LeaderF can be use as function browser
-Plugin 'Yggdroot/LeaderF'
+"Plugin 'Yggdroot/LeaderF'
+Plug 'Yggdroot/LeaderF'
 
 " fzf will be cloned and install via git and shell, so not use plugin manager
 "Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
+Plug 'junegunn/fzf.vim'
 
 " ACK
-Plugin 'mileszs/ack.vim'
+"Plugin 'mileszs/ack.vim'
+Plug 'mileszs/ack.vim'
 
 " Easy motion
-Plugin 'easymotion/vim-easymotion'
+"Plugin 'easymotion/vim-easymotion'
+Plug 'easymotion/vim-easymotion'
 
 " snippets
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
+"Plugin 'SirVer/ultisnips'
+"Plugin 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
+"call vundle#end()            " required
+" Initialize plugin system
+call plug#end()
+
 "filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
