@@ -16,29 +16,29 @@ do
     echo ""
     echo "Checking $prog..."
     if dpkg --get-selections | grep -q "^$prog[[:space:]]*install$" >/dev/null; then
-        echo "$prog is not installed"
+        echo "$prog is not installed!"
         sudo apt-get install "$prog"
     else
-        echo "$prog is installed"
+        echo "$prog already installed"
     fi
 done
 
 echo ""
-echo "Checking exist vim plugin"
-if [ -d $HOME/.vim ]; then
+echo "Checking for exist vim plugins"
+if [ -d "$HOME/.vim" ]; then
     echo "Detected existing vim plugin..."
     echo "Do you want to backup first? [y]/n: "
     read -r option
     if [ "$option" = "y" ] || [ "$option" = "Y" ]; then
         mv "$HOME/.vim" "$HOME/.vim_bak_$curr_dat"
-        echo "Backup done!"
+        echo "Backup done"
     fi
 fi
 
 echo ""
-echo "Checking vim-plugin..."
+echo "Checking vim-plug..."
 if [ -f ~/.vim/autoload/plug.vim ]; then
-    echo "vim-plugin is installed"
+    echo "vim-plug already installed"
 else
     echo "vim-plugin is not installed, get it..."
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
@@ -48,7 +48,7 @@ fi
 echo ""
 echo "Checking fzf..."
 if [ -d ~/.fzf ]; then
-    echo "fzf installed"
+    echo "fzf already installed"
 else
     echo "fzf is not installed, clone from git and install..."
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install --all
@@ -67,13 +67,13 @@ if [ ! -f /usr/local/bin/fzf ]; then
 fi
 
 echo ""
-echo "Preparing..."
+echo "Final preparing..."
 c_path=$(pwd)
 if [ -f ~/.vimrc ];  then
     echo "Backup current .vimrc..."
     mv "$HOME/.vimrc" "$HOME/.vimrc_bak_$curr_dat"
 fi
-ln -s "$c_path"/vimrc "$HOME"/.vimrc
+ln -s "$c_path/vimrc" "$HOME/.vimrc"
 
 echo ""
 echo "Env setup done, install VIM plugin..."
