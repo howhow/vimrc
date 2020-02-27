@@ -1,21 +1,24 @@
 # Use github to sync vi config
-- Tested on Ubuntu14.04 and 16.04
+- Tested on Ubuntu14.04, 16.04 and 18.04
 - **Only for C and Assembly language development**
 
 ## How to use
 [git](https://git-scm.com/), [vim](https://github.com/vim/vim) and [gtags](https://www.gnu.org/software/global/global.html)* must be installed
-```
+
+```bash
 git clone https://github.com/howhow/vimrc ~/.my_config/vim
 cd ~/.my_config/vim
-./install.sh build-essential cmake ctags cscope python2.7 silversearcher-ag
+./install.sh build-essential cmake ctags cscope python3.7 silversearcher-ag nodejs npm
 ```
 **_NOTE: For older systems (e.g. Ubuntu 14.04) you may run into compilation
 issues with `cmake`. Therefore, install the `cmake3` instead:_**
-```
-./install.sh build-essential cmake3 ctags cscope python2.7 silversearcher-ag
+
+```bash
+./install.sh build-essential cmake3 ctags cscope python3.7 silversearcher-ag
 ```
 
 - you could clone to anywhere, but I like to save all my configs into one place
+- If you have old vim config, install script will ask if you like to backup
 - [git installation guide](https://gist.github.com/derhuerst/1b15ff4652a867391f03)
 - [gtags installtion guide](https://www.gnu.org/software/global/download.html)
 ```bash
@@ -28,29 +31,29 @@ sudo make install && \
 cd -
 ```
 - [vim installation guide](https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source)
-  - vim version must higer than 8.0
+  - vim version must higher than 8.0
   - Please pay attention to vim version and change corresponding `VIMRUNTIMEDIR` during make, eg,
   ```bash
   make VIMRUNTIMEDIR=/usr/local/share/vim/vim80
   ```
-  right now vim version already upgrade to v8.1, therefore:
+  right now vim version already upgrade to v8.2, therefore:
   ```bash
-  make VIMRUNTIMEDIR=/usr/local/share/vim/vim81
+  make VIMRUNTIMEDIR=/usr/local/share/vim/vim82
   ```
- **NOTE**: `ctags` will be redirected to `Exuberant Ctags`, which without maintiance long time ago, recommand to install [Universal Ctags](https://github.com/universal-ctags/ctags) to instead
+ **NOTE**: `ctags` will be redirected to `Exuberant Ctags`, which without maintenance long time ago, recommend to install [Universal Ctags](https://github.com/universal-ctags/ctags) to instead
 
 ## Integrated plugins
-1. plugin manager: [Vundle](https://github.com/VundleVim/Vundle.vim)
+1. plugin manager: [vim-plug](https://github.com/junegunn/vim-plug)
 2. git: [fugitive](https://github.com/tpope/vim-fugitive), [gitgutter](https://github.com/airblade/vim-gitgutter), [gv](https://github.com/junegunn/gv.vim)
-3. complete: [YouCompleteMe](https://github.com/Valloric/YouCompleteMe)*
+3. complete: ~~[YouCompleteMe](https://github.com/Valloric/YouCompleteMe)*~~, [coc](https://github.com/neoclide/coc.nvim)
 4. status line: [airline](https://github.com/vim-airline/vim-airline)
-5. color schemes: [gruvbox](https://github.com/morhetz/gruvbox), ~~[solarized](https://github.com/altercation/solarized)~~, ~~[dracula](https://draculatheme.com/vim/)~~
-6. syntax checking: ~~[syntastic](https://github.com/vim-syntastic/syntastic)~~, [ale](https://github.com/w0rp/ale)
+5. color schemes: [gruvbox](https://github.com/morhetz/gruvbox), [solarized](https://github.com/altercation/solarized), [dracula](https://draculatheme.com/vim/)
+6. syntax checking: ~~[syntastic](https://github.com/vim-syntastic/syntastic)~~, [ale](https://github.com/dense-analysis/ale)
 7. searching: ~~[CrtlP](https://github.com/ctrlpvim/ctrlp.vim)~~,[LeaderF](https://github.com/Yggdroot/LeaderF), [fzf](https://github.com/junegunn/fzf), [ack](https://github.com/mileszs/ack.vim), [vim-easymotion](https://github.com/easymotion/vim-easymotion)
 8. document: [vimtex](https://github.com/lervag/vimtex), ~~[slumlord](https://github.com/scrooloose/vim-slumlord)~~
 9. code: ~~[tagbar](https://github.com/majutsushi/tagbar)~~, ~~[nerdtree](https://github.com/scrooloose/nerdtree)~~, ~~[cscopemaps](https://github.com/steffanc/cscopemaps.vim)~~, [gutentags](https://github.com/ludovicchabant/vim-gutentags), [gutentags_plus](https://github.com/skywind3000/gutentags_plus), [ultisnips](https://github.com/SirVer/ultisnips), [vim-snippets](https://github.com/honza/vim-snippets)
 
-*YCM need compile after download, if fail to use `install.sh`, please refer to the [guide](https://github.com/Valloric/YouCompleteMe#installation)
+*YCM need compile after download, if you like it, please refer to the [guide](https://github.com/Valloric/YouCompleteMe#installation)
 
 ## Some features
 1. check tab and EOL whitespace
@@ -58,7 +61,7 @@ cd -
 
 ## Keymaps
 
-| keymap | desc |
+| Keymap | Desc |
 |--------|------|
 | <kbd>space</kbd> | leader |
 | `<leader>` + <kbd>f</kbd> | Open file list |
