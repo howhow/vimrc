@@ -30,6 +30,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " air-line
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+"Plug 'edkolev/tmuxline.vim'
 
 " UML
 "Plug 'scrooloose/vim-slumlord'
@@ -215,7 +216,17 @@ endfunction
 
 " status line config
 " Air-line {
-    let g:airline#extensions#tabline#enabled = 1
+"    let g:airline#extensions#tabline#enabled = 1
+"}
+
+" tmuxline {
+"    let g:tmuxline_powerline_separators = 0
+"    let g:tmuxline_separators = {
+"    \ 'left' : '',
+"    \ 'left_alt': '>',
+"    \ 'right' : '',
+"    \ 'right_alt' : '<',
+"    \ 'space' : ' '}
 "}
 
 " YCM {
