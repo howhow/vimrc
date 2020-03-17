@@ -319,7 +319,7 @@ endfunction
     nmap <leader>f :FZF<cr>
 
     " leaderF mapping
-    nmap <leader>F :leaderfFunction!<cr>
+    nmap <Leader>F :LeaderfFunction!<cr>
 
     " Ack,  don't jump to first result automatically
     nnoremap <leader>a :Ack!<Space><C-R>=expand("<cword>")<CR><CR>
