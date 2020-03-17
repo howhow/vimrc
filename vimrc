@@ -270,26 +270,36 @@ endfunction
 " Easymotion {
     let g:EasyMotion_smartcase = 1
     "let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
-    map <Leader><leader>h <Plug>(easymotion-linebackward)
-    map <Leader><Leader>j <Plug>(easymotion-j)
-    map <Leader><Leader>k <Plug>(easymotion-k)
-    map <Leader><leader>l <Plug>(easymotion-lineforward)
-    map <Leader><leader>. <Plug>(easymotion-repeat)
+    map <leader><leader>h <Plug>(easymotion-linebackward)
+    map <leader><leader>j <Plug>(easymotion-j)
+    map <leader><leader>k <Plug>(easymotion-k)
+    map <leader><leader>l <Plug>(easymotion-lineforward)
+    map <leader><leader>. <Plug>(easymotion-repeat)
 
-    " <Leader>f{char} to move to {char}
-    map  <Leader>c <Plug>(easymotion-bd-f)
-    nmap <Leader>c <Plug>(easymotion-overwin-f)
+    " <leader>f{char} to move to {char}
+    map  <leader><leader>c <Plug>(easymotion-bd-f)
+    nmap <leader><leader>c <Plug>(easymotion-overwin-f)
 
     " s{char}{char} to move to {char}{char}
     nmap s <Plug>(easymotion-overwin-f2)
 
     " Move to line
-    map <Leader>L <Plug>(easymotion-bd-jk)
-    nmap <Leader>L <Plug>(easymotion-overwin-line)
+    map <leader>L <Plug>(easymotion-bd-jk)
+    nmap <leader>L <Plug>(easymotion-overwin-line)
 
     " Move to word
-    map  <Leader>w <Plug>(easymotion-bd-w)
-    nmap <Leader>w <Plug>(easymotion-overwin-w)
+    map  <leader><leader>w <Plug>(easymotion-bd-w)
+    nmap <leader><leader>w <Plug>(easymotion-overwin-w)
+
+    " n-char search
+    map  / <Plug>(easymotion-sn)
+    omap / <Plug>(easymotion-tn)
+
+    " These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
+    " Without these mappings, `n` & `N` works fine. (These mappings just provide
+    " different highlight method and have some other features )
+    map  n <Plug>(easymotion-next)
+    map  N <Plug>(easymotion-prev)
 "}
 
 " ultisnips {
@@ -308,8 +318,8 @@ endfunction
     " FZF mapping
     nmap <leader>f :FZF<cr>
 
-    " LeaderF mapping
-    nmap <leader>F :LeaderfFunction!<cr>
+    " leaderF mapping
+    nmap <leader>F :leaderfFunction!<cr>
 
     " Ack,  don't jump to first result automatically
     nnoremap <leader>a :Ack!<Space><C-R>=expand("<cword>")<CR><CR>
@@ -336,7 +346,7 @@ endfunction
     nmap <leader>5 :cp<cr>
     nmap <leader>6 :cn<cr>
 
-    nmap <silent> <Leader>e :call <SID>StripTrailingWhitespace()<CR>:exe ":echo 'Strip EOL whitespace'"<CR>
+    nmap <silent> <leader>e :call <SID>StripTrailingWhitespace()<CR>:exe ":echo 'Strip EOL whitespace'"<CR>
     nmap <leader>wn :match ErrorMsg /\s\+$/<CR>
     nmap <leader>tn :match ErrorMsg /\t/<CR>
 "}
