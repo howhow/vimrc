@@ -73,8 +73,8 @@ Plug 'mileszs/ack.vim'
 Plug 'easymotion/vim-easymotion'
 
 " snippets
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+"Plug 'SirVer/ultisnips'
+"Plug 'honza/vim-snippets'
 
 " Initialize plugin system
 call plug#end()
@@ -303,10 +303,10 @@ endfunction
 "}
 
 " ultisnips {
-    let g:UltiSnipsExpandTrigger="<c-e>"
-    let g:UltiSnipsJumpForwardTrigger="<c-b>"
-    let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-    let g:UltiSnipsEditSplit="horizontal"
+"    let g:UltiSnipsExpandTrigger="<c-e>"
+"    let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"    let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+"    let g:UltiSnipsEditSplit="horizontal"
 "}
 
 " key mapping {
@@ -350,4 +350,3 @@ endfunction
     nmap <leader>wn :match ErrorMsg /\s\+$/<CR>
     nmap <leader>tn :match ErrorMsg /\t/<CR>
 "}
-
